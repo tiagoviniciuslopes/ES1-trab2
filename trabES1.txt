@@ -1,0 +1,30 @@
+Prezados Alunos,
+
+Segue no link especificação do trabalho a ser apresentado dia 28/06 e 16/08/19.
+
+https://drive.google.com/file/d/11-JjN1G9CG_OAVXXcpE0BL8aDIMyt8Cs/view?usp=sharing
+
+
+Procurei deixar o mais detalhado possível todos os detalhes do trabalho, mais basicamente:
+
+Parte 1:
+a) O grupo deve escolher um dos estudos de caso
+b) Realizar o diagrama de casos de uso
+c) Realizar o diagrama de classes de negócio 
+d) Modelo E-R
+e) Protótipo Interface Web das telas apresentadas
+
+Parte 2:
+a) Implementação dos serviços de Endereço
+b) Implementação dos serviços para cadastrar e consultar Cliente ou Paciente
+c) Implementação serviço para reconhecer imagem do IBM Cloud (mesmo trabalho 1. bimestre) mas integrado a interface WEB
+d) Implementação interface Web para cadastrar e consultar cliente ou paciente - no caso, complementar a parte 1 item E com a chamada aos serviços implementados nesta parte.
+
+Parte 3 - Bônus de 1,0 ponto
+- Expor e consumir os serviços implementados via WebServices.
+
+
+att.
+
+
+Roberto Gil
