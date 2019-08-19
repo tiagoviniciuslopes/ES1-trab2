@@ -153,7 +153,9 @@ CREATE TABLE Funcionario (
  idEndereco INT,
  numeroDoc VARCHAR(10),
  dataExpedicao DATE,
- idOrgaoExpeditor INT
+ idOrgaoExpeditor INT,
+ caminhoFoto VARCHAR(10),
+ descricaoFoto VARCHAR(10)
 );
 
 ALTER TABLE Funcionario ADD CONSTRAINT PK_Funcionario PRIMARY KEY (idFuncionario);
@@ -168,7 +170,9 @@ CREATE TABLE ClienteEmpresa (
  cnpj VARCHAR(10) NOT NULL,
  numero INT NOT NULL,
  complemento VARCHAR(10),
- idEndereco INT
+ idEndereco INT,
+ caminhoFoto VARCHAR(10),
+ descricaoFoto VARCHAR(10)
 );
 
 ALTER TABLE ClienteEmpresa ADD CONSTRAINT PK_ClienteEmpresa PRIMARY KEY (idClienteEmpresa);
@@ -195,7 +199,9 @@ CREATE TABLE ClientePessoa (
  idEndereco INT,
  numeroDoc VARCHAR(10),
  dataExpedicao DATE,
- idOrgaoExpeditor INT
+ idOrgaoExpeditor INT,
+ caminhoFoto VARCHAR(10),
+ descricaoFoto VARCHAR(10)
 );
 
 ALTER TABLE ClientePessoa ADD CONSTRAINT PK_ClientePessoa PRIMARY KEY (idClientePessoa);

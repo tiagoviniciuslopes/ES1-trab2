@@ -120,6 +120,15 @@ CREATE TABLE Logradouro (
 ALTER TABLE Logradouro ADD CONSTRAINT PK_Logradouro PRIMARY KEY (idLogradouro);
 
 
+CREATE TABLE OrgaoExpeditor (
+ idOrgaoExpeditor INT NOT NULL,
+ nomeOrgaoExpeditor VARCHAR(10) NOT NULL,
+ idUF INT
+);
+
+ALTER TABLE OrgaoExpeditor ADD CONSTRAINT PK_OrgaoExpeditor PRIMARY KEY (idOrgaoExpeditor);
+
+
 CREATE TABLE Endereco (
  idEndereco INT NOT NULL,
  cep VARCHAR(10) NOT NULL,
@@ -141,7 +150,10 @@ CREATE TABLE Funcionario (
  idSexo INT,
  numero INT NOT NULL,
  complemento VARCHAR(10),
- idEndereco INT
+ idEndereco INT,
+ numeroDoc VARCHAR(10),
+ dataExpedicao DATE,
+ idOrgaoExpeditor INT
 );
 
 ALTER TABLE Funcionario ADD CONSTRAINT PK_Funcionario PRIMARY KEY (idFuncionario);
@@ -180,7 +192,10 @@ CREATE TABLE ClientePessoa (
  idSexo INT,
  numero INT NOT NULL,
  complemento VARCHAR(10),
- idEndereco INT
+ idEndereco INT,
+ numeroDoc VARCHAR(10),
+ dataExpedicao DATE,
+ idOrgaoExpeditor INT
 );
 
 ALTER TABLE ClientePessoa ADD CONSTRAINT PK_ClientePessoa PRIMARY KEY (idClientePessoa);
@@ -340,6 +355,9 @@ ALTER TABLE Cidade ADD CONSTRAINT FK_Cidade_0 FOREIGN KEY (idUF) REFERENCES UF (
 ALTER TABLE Logradouro ADD CONSTRAINT FK_Logradouro_0 FOREIGN KEY (idTipoLogradouro) REFERENCES TipoLogradouro (idTipoLogradouro);
 
 
+ALTER TABLE OrgaoExpeditor ADD CONSTRAINT FK_OrgaoExpeditor_0 FOREIGN KEY (idUF) REFERENCES UF (idUF);
+
+
 ALTER TABLE Endereco ADD CONSTRAINT FK_Endereco_0 FOREIGN KEY (idBairro) REFERENCES Bairro (idBairro);
 ALTER TABLE Endereco ADD CONSTRAINT FK_Endereco_1 FOREIGN KEY (idCidade) REFERENCES Cidade (idCidade);
 ALTER TABLE Endereco ADD CONSTRAINT FK_Endereco_2 FOREIGN KEY (idLogradouro) REFERENCES Logradouro (idLogradouro);
@@ -347,6 +365,7 @@ ALTER TABLE Endereco ADD CONSTRAINT FK_Endereco_2 FOREIGN KEY (idLogradouro) REF
 
 ALTER TABLE Funcionario ADD CONSTRAINT FK_Funcionario_0 FOREIGN KEY (idSexo) REFERENCES Sexo (idSexo);
 ALTER TABLE Funcionario ADD CONSTRAINT FK_Funcionario_1 FOREIGN KEY (idEndereco) REFERENCES Endereco (idEndereco);
+ALTER TABLE Funcionario ADD CONSTRAINT FK_Funcionario_2 FOREIGN KEY (idOrgaoExpeditor) REFERENCES OrgaoExpeditor (idOrgaoExpeditor);
 
 
 ALTER TABLE ClienteEmpresa ADD CONSTRAINT FK_ClienteEmpresa_0 FOREIGN KEY (idEndereco) REFERENCES Endereco (idEndereco);
@@ -358,6 +377,7 @@ ALTER TABLE ClienteEmpresa_AtividadeComercial ADD CONSTRAINT FK_ClienteEmpresa_A
 
 ALTER TABLE ClientePessoa ADD CONSTRAINT FK_ClientePessoa_0 FOREIGN KEY (idSexo) REFERENCES Sexo (idSexo);
 ALTER TABLE ClientePessoa ADD CONSTRAINT FK_ClientePessoa_1 FOREIGN KEY (idEndereco) REFERENCES Endereco (idEndereco);
+ALTER TABLE ClientePessoa ADD CONSTRAINT FK_ClientePessoa_2 FOREIGN KEY (idOrgaoExpeditor) REFERENCES OrgaoExpeditor (idOrgaoExpeditor);
 
 
 ALTER TABLE EmailClienteEmpresa ADD CONSTRAINT FK_EmailClienteEmpresa_0 FOREIGN KEY (idClienteEmpresa) REFERENCES ClienteEmpresa (idClienteEmpresa);
