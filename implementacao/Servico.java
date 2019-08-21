@@ -2,10 +2,10 @@ public class Servico {
 
 	private int idServico;
 
-	private float preco;
+	private float precoBase;
 
 	private String nome;
 
-	private int horas;
+	private float horasBase;
 
 }

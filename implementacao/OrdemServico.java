@@ -10,10 +10,10 @@ public class OrdemServico {
 
 	private String observacoes;
 
-	private Produto[] produto;
-
-	private Servico[] servico;
-
 	private Etapa etapa;
+
+	private OrdemServico_Servico[] ordemServico_Servico;
+
+	private OrdemServico_Produto[] ordemServico_Produto;
 
 }

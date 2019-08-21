@@ -49,7 +49,7 @@ ALTER TABLE Pais ADD CONSTRAINT PK_Pais PRIMARY KEY (idPais);
 CREATE TABLE Produto (
  idProduto INT NOT NULL,
  nomeProduto VARCHAR(10),
- precoProduto FLOAT(10)
+ precoBaseProduto FLOAT(10)
 );
 
 ALTER TABLE Produto ADD CONSTRAINT PK_Produto PRIMARY KEY (idProduto);
@@ -57,9 +57,9 @@ ALTER TABLE Produto ADD CONSTRAINT PK_Produto PRIMARY KEY (idProduto);
 
 CREATE TABLE Servico (
  idServico INT NOT NULL,
- precoServico FLOAT(10),
+ precoBaseServico FLOAT(10),
  nomeServico VARCHAR(10),
- horasServico INT
+ horasBaseServico FLOAT(10)
 );
 
 ALTER TABLE Servico ADD CONSTRAINT PK_Servico PRIMARY KEY (idServico);
@@ -310,7 +310,9 @@ ALTER TABLE OrdemServicoClienteEmpresa ADD CONSTRAINT PK_OrdemServicoClienteEmpr
 
 CREATE TABLE OrdemServicoClienteEmpresa_Servico (
  idServico INT NOT NULL,
- idOrdemServicoClientePessoa INT NOT NULL
+ idOrdemServicoClientePessoa INT NOT NULL,
+ precoServico FLOAT(10),
+ horasServico FLOAT(10)
 );
 
 ALTER TABLE OrdemServicoClienteEmpresa_Servico ADD CONSTRAINT PK_OrdemServicoClienteEmpresa_Servico PRIMARY KEY (idServico,idOrdemServicoClientePessoa);
@@ -330,7 +332,9 @@ ALTER TABLE OrdemServicoClientePessoa ADD CONSTRAINT PK_OrdemServicoClientePesso
 
 CREATE TABLE OrdemServicoClientePessoa_Produto (
  idOrdemServicoClientePessoa INT NOT NULL,
- idProduto INT NOT NULL
+ idProduto INT NOT NULL,
+ precoProduto FLOAT(10),
+ quantidadeProduto INT
 );
 
 ALTER TABLE OrdemServicoClientePessoa_Produto ADD CONSTRAINT PK_OrdemServicoClientePessoa_Produto PRIMARY KEY (idOrdemServicoClientePessoa,idProduto);
@@ -338,7 +342,9 @@ ALTER TABLE OrdemServicoClientePessoa_Produto ADD CONSTRAINT PK_OrdemServicoClie
 
 CREATE TABLE OrdemServicoClientePessoa_Servico (
  idServico INT NOT NULL,
- idOrdemServicoClientePessoa INT NOT NULL
+ idOrdemServicoClientePessoa INT NOT NULL,
+ precoServico FLOAT(10),
+ horasServico FLOAT(10)
 );
 
 ALTER TABLE OrdemServicoClientePessoa_Servico ADD CONSTRAINT PK_OrdemServicoClientePessoa_Servico PRIMARY KEY (idServico,idOrdemServicoClientePessoa);
@@ -346,7 +352,9 @@ ALTER TABLE OrdemServicoClientePessoa_Servico ADD CONSTRAINT PK_OrdemServicoClie
 
 CREATE TABLE OrderServicoClienteEmpresa_Produto (
  idProduto INT NOT NULL,
- idOrdemServicoClientePessoa INT NOT NULL
+ idOrdemServicoClientePessoa INT NOT NULL,
+ precoProduto FLOAT(10),
+ quantidadeProduto FLOAT(10)
 );
 
 ALTER TABLE OrderServicoClienteEmpresa_Produto ADD CONSTRAINT PK_OrderServicoClienteEmpresa_Produto PRIMARY KEY (idProduto,idOrdemServicoClientePessoa);

@@ -4,10 +4,6 @@ public class Produto {
 
 	private String nome;
 
-	private float preco;
-
-	private int quantidade;
-
-	private float total;
+	private float precoBase;
 
 }
