@@ -161,6 +161,28 @@ CREATE TABLE Funcionario (
 ALTER TABLE Funcionario ADD CONSTRAINT PK_Funcionario PRIMARY KEY (idFuncionario);
 
 
+CREATE TABLE Cliente (
+ idCliente CHAR(10) NOT NULL,
+ primeiroNomeCliente VARCHAR(10) NOT NULL,
+ nomeMeioCliente VARCHAR(10),
+ ultimoNomeCliente VARCHAR(10) NOT NULL,
+ nomeAbreviadoCliente VARCHAR(10),
+ cpf VARCHAR(10),
+ cnpj VARCHAR(10),
+ idSexo INT,
+ numero INT NOT NULL,
+ complemento VARCHAR(10),
+ idEndereco INT,
+ numeroDoc VARCHAR(10),
+ dataExpedicao DATE,
+ idOrgaoExpeditor INT,
+ caminhoFoto VARCHAR(10),
+ descricaoFoto VARCHAR(10)
+);
+
+ALTER TABLE Cliente ADD CONSTRAINT PK_Cliente PRIMARY KEY (idCliente);
+
+
 CREATE TABLE ClienteEmpresa (
  idClienteEmpresa CHAR(10) NOT NULL,
  primeiroNomeEmpresa VARCHAR(10) NOT NULL,
@@ -178,51 +200,13 @@ CREATE TABLE ClienteEmpresa (
 ALTER TABLE ClienteEmpresa ADD CONSTRAINT PK_ClienteEmpresa PRIMARY KEY (idClienteEmpresa);
 
 
-CREATE TABLE ClienteEmpresa_AtividadeComercial (
- idAtividadeComercial INT NOT NULL,
- idClienteEmpresa CHAR(10) NOT NULL
-);
-
-ALTER TABLE ClienteEmpresa_AtividadeComercial ADD CONSTRAINT PK_ClienteEmpresa_AtividadeComercial PRIMARY KEY (idAtividadeComercial,idClienteEmpresa);
-
-
-CREATE TABLE ClientePessoa (
- idClientePessoa CHAR(10) NOT NULL,
- primeiroNomePessoa VARCHAR(10) NOT NULL,
- nomeMeioPessoa VARCHAR(10),
- ultimoNomePessoa VARCHAR(10) NOT NULL,
- nomeAbreviadoPessoa VARCHAR(10),
- cpf VARCHAR(10) NOT NULL,
- idSexo INT,
- numero INT NOT NULL,
- complemento VARCHAR(10),
- idEndereco INT,
- numeroDoc VARCHAR(10),
- dataExpedicao DATE,
- idOrgaoExpeditor INT,
- caminhoFoto VARCHAR(10),
- descricaoFoto VARCHAR(10)
-);
-
-ALTER TABLE ClientePessoa ADD CONSTRAINT PK_ClientePessoa PRIMARY KEY (idClientePessoa);
-
-
-CREATE TABLE EmailClienteEmpresa (
- idEmailClienteEmpresa INT NOT NULL,
- descricaoEmail VARCHAR(10),
- idClienteEmpresa CHAR(10)
-);
-
-ALTER TABLE EmailClienteEmpresa ADD CONSTRAINT PK_EmailClienteEmpresa PRIMARY KEY (idEmailClienteEmpresa);
-
-
-CREATE TABLE EmailClientePessoa (
- idEmailClientePessoa INT NOT NULL,
+CREATE TABLE EmailCliente (
+ idEmailCliente INT NOT NULL,
  descricaoEmail VARCHAR(10) NOT NULL,
- idClientePessoa CHAR(10)
+ idCliente CHAR(10)
 );
 
-ALTER TABLE EmailClientePessoa ADD CONSTRAINT PK_EmailClientePessoa PRIMARY KEY (idEmailClientePessoa);
+ALTER TABLE EmailCliente ADD CONSTRAINT PK_EmailCliente PRIMARY KEY (idEmailCliente);
 
 
 CREATE TABLE EmailFuncionario (
@@ -234,28 +218,16 @@ CREATE TABLE EmailFuncionario (
 ALTER TABLE EmailFuncionario ADD CONSTRAINT PK_EmailFuncionario PRIMARY KEY (idEmailFuncionario);
 
 
-CREATE TABLE FoneClienteEmpresa (
- idFoneClienteEmpresa INT NOT NULL,
+CREATE TABLE FoneCliente (
+ idFoneCliente INT NOT NULL,
  numeroFone VARCHAR(10) NOT NULL,
- idTipoFone INT,
- idDDD INT,
- idDDI INT,
- idClienteEmpresa CHAR(10)
-);
-
-ALTER TABLE FoneClienteEmpresa ADD CONSTRAINT PK_FoneClienteEmpresa PRIMARY KEY (idFoneClienteEmpresa);
-
-
-CREATE TABLE FoneClientePessoa (
- idFoneClientePessoa INT NOT NULL,
- numeroFone VARCHAR(10) NOT NULL,
- idClientePessoa CHAR(10),
+ idCliente CHAR(10),
  idDDI INT,
  idDDD INT,
  idTipoFone INT
 );
 
-ALTER TABLE FoneClientePessoa ADD CONSTRAINT PK_FoneClientePessoa PRIMARY KEY (idFoneClientePessoa);
+ALTER TABLE FoneCliente ADD CONSTRAINT PK_FoneCliente PRIMARY KEY (idFoneCliente);
 
 
 CREATE TABLE FoneFuncionario (
@@ -270,94 +242,57 @@ CREATE TABLE FoneFuncionario (
 ALTER TABLE FoneFuncionario ADD CONSTRAINT PK_FoneFuncionario PRIMARY KEY (idFoneFuncionario);
 
 
-CREATE TABLE VeiculoClienteEmpresa (
- idVeiculoClientePessoa INT NOT NULL,
- nomeVeiculo CHAR(10),
- marcaVeiculo VARCHAR(10) NOT NULL,
- modeloVeiculo VARCHAR(10),
- kmVeiculo INT NOT NULL,
- placaVeiculo VARCHAR(10),
- idClienteEmpresa CHAR(10)
-);
-
-ALTER TABLE VeiculoClienteEmpresa ADD CONSTRAINT PK_VeiculoClienteEmpresa PRIMARY KEY (idVeiculoClientePessoa);
-
-
-CREATE TABLE VeiculoClientePessoa (
- idVeiculoClientePessoa INT NOT NULL,
+CREATE TABLE Veiculo (
+ idVeiculo INT NOT NULL,
  nomeVeiculo VARCHAR(10) NOT NULL,
  marcaVeiculo VARCHAR(10) NOT NULL,
  modeloVeiculo VARCHAR(10),
  kmVeiculo INT NOT NULL,
  placaVeiculo VARCHAR(10),
- idClientePessoa CHAR(10)
+ idCliente CHAR(10)
 );
 
-ALTER TABLE VeiculoClientePessoa ADD CONSTRAINT PK_VeiculoClientePessoa PRIMARY KEY (idVeiculoClientePessoa);
+ALTER TABLE Veiculo ADD CONSTRAINT PK_Veiculo PRIMARY KEY (idVeiculo);
 
 
-CREATE TABLE OrdemServicoClienteEmpresa (
- idOrdemServicoClientePessoa INT NOT NULL,
- data DATE,
- observacoes VARCHAR(10),
- idEtapa INT,
- idVeiculoClientePessoa INT,
- idFuncionario INT
+CREATE TABLE AtividadeComercial_Cliente (
+ idAtividadeComercial INT NOT NULL,
+ idCliente CHAR(10) NOT NULL
 );
 
-ALTER TABLE OrdemServicoClienteEmpresa ADD CONSTRAINT PK_OrdemServicoClienteEmpresa PRIMARY KEY (idOrdemServicoClientePessoa);
+ALTER TABLE AtividadeComercial_Cliente ADD CONSTRAINT PK_AtividadeComercial_Cliente PRIMARY KEY (idAtividadeComercial,idCliente);
 
 
-CREATE TABLE OrdemServicoClienteEmpresa_Servico (
- idServico INT NOT NULL,
- idOrdemServicoClientePessoa INT NOT NULL,
- precoServico FLOAT(10),
- horasServico FLOAT(10)
-);
-
-ALTER TABLE OrdemServicoClienteEmpresa_Servico ADD CONSTRAINT PK_OrdemServicoClienteEmpresa_Servico PRIMARY KEY (idServico,idOrdemServicoClientePessoa);
-
-
-CREATE TABLE OrdemServicoClientePessoa (
- idOrdemServicoClientePessoa INT NOT NULL,
+CREATE TABLE OrdemServico (
+ idOrdemServico INT NOT NULL,
  data DATE NOT NULL,
  observacoes VARCHAR(10),
  idEtapa INT,
- idVeiculoClientePessoa INT,
+ idVeiculo INT,
  idFuncionario INT
 );
 
-ALTER TABLE OrdemServicoClientePessoa ADD CONSTRAINT PK_OrdemServicoClientePessoa PRIMARY KEY (idOrdemServicoClientePessoa);
+ALTER TABLE OrdemServico ADD CONSTRAINT PK_OrdemServico PRIMARY KEY (idOrdemServico);
 
 
-CREATE TABLE OrdemServicoClientePessoa_Produto (
- idOrdemServicoClientePessoa INT NOT NULL,
+CREATE TABLE OrdemServico_Produto (
+ idOrdemServico INT NOT NULL,
  idProduto INT NOT NULL,
  precoProduto FLOAT(10),
  quantidadeProduto INT
 );
 
-ALTER TABLE OrdemServicoClientePessoa_Produto ADD CONSTRAINT PK_OrdemServicoClientePessoa_Produto PRIMARY KEY (idOrdemServicoClientePessoa,idProduto);
+ALTER TABLE OrdemServico_Produto ADD CONSTRAINT PK_OrdemServico_Produto PRIMARY KEY (idOrdemServico,idProduto);
 
 
-CREATE TABLE OrdemServicoClientePessoa_Servico (
+CREATE TABLE OrdemServico_Servico (
  idServico INT NOT NULL,
- idOrdemServicoClientePessoa INT NOT NULL,
+ idOrdemServico INT NOT NULL,
  precoServico FLOAT(10),
  horasServico FLOAT(10)
 );
 
-ALTER TABLE OrdemServicoClientePessoa_Servico ADD CONSTRAINT PK_OrdemServicoClientePessoa_Servico PRIMARY KEY (idServico,idOrdemServicoClientePessoa);
-
-
-CREATE TABLE OrderServicoClienteEmpresa_Produto (
- idProduto INT NOT NULL,
- idOrdemServicoClientePessoa INT NOT NULL,
- precoProduto FLOAT(10),
- quantidadeProduto FLOAT(10)
-);
-
-ALTER TABLE OrderServicoClienteEmpresa_Produto ADD CONSTRAINT PK_OrderServicoClienteEmpresa_Produto PRIMARY KEY (idProduto,idOrdemServicoClientePessoa);
+ALTER TABLE OrdemServico_Servico ADD CONSTRAINT PK_OrdemServico_Servico PRIMARY KEY (idServico,idOrdemServico);
 
 
 ALTER TABLE UF ADD CONSTRAINT FK_UF_0 FOREIGN KEY (idPais) REFERENCES Pais (idPais);
@@ -382,37 +317,24 @@ ALTER TABLE Funcionario ADD CONSTRAINT FK_Funcionario_1 FOREIGN KEY (idEndereco)
 ALTER TABLE Funcionario ADD CONSTRAINT FK_Funcionario_2 FOREIGN KEY (idOrgaoExpeditor) REFERENCES OrgaoExpeditor (idOrgaoExpeditor);
 
 
+ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_0 FOREIGN KEY (idSexo) REFERENCES Sexo (idSexo);
+ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_1 FOREIGN KEY (idEndereco) REFERENCES Endereco (idEndereco);
+ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_2 FOREIGN KEY (idOrgaoExpeditor) REFERENCES OrgaoExpeditor (idOrgaoExpeditor);
+
+
 ALTER TABLE ClienteEmpresa ADD CONSTRAINT FK_ClienteEmpresa_0 FOREIGN KEY (idEndereco) REFERENCES Endereco (idEndereco);
 
 
-ALTER TABLE ClienteEmpresa_AtividadeComercial ADD CONSTRAINT FK_ClienteEmpresa_AtividadeComercial_0 FOREIGN KEY (idAtividadeComercial) REFERENCES AtividadeComercial (idAtividadeComercial);
-ALTER TABLE ClienteEmpresa_AtividadeComercial ADD CONSTRAINT FK_ClienteEmpresa_AtividadeComercial_1 FOREIGN KEY (idClienteEmpresa) REFERENCES ClienteEmpresa (idClienteEmpresa);
-
-
-ALTER TABLE ClientePessoa ADD CONSTRAINT FK_ClientePessoa_0 FOREIGN KEY (idSexo) REFERENCES Sexo (idSexo);
-ALTER TABLE ClientePessoa ADD CONSTRAINT FK_ClientePessoa_1 FOREIGN KEY (idEndereco) REFERENCES Endereco (idEndereco);
-ALTER TABLE ClientePessoa ADD CONSTRAINT FK_ClientePessoa_2 FOREIGN KEY (idOrgaoExpeditor) REFERENCES OrgaoExpeditor (idOrgaoExpeditor);
-
-
-ALTER TABLE EmailClienteEmpresa ADD CONSTRAINT FK_EmailClienteEmpresa_0 FOREIGN KEY (idClienteEmpresa) REFERENCES ClienteEmpresa (idClienteEmpresa);
-
-
-ALTER TABLE EmailClientePessoa ADD CONSTRAINT FK_EmailClientePessoa_0 FOREIGN KEY (idClientePessoa) REFERENCES ClientePessoa (idClientePessoa);
+ALTER TABLE EmailCliente ADD CONSTRAINT FK_EmailCliente_0 FOREIGN KEY (idCliente) REFERENCES Cliente (idCliente);
 
 
 ALTER TABLE EmailFuncionario ADD CONSTRAINT FK_EmailFuncionario_0 FOREIGN KEY (idFuncionario) REFERENCES Funcionario (idFuncionario);
 
 
-ALTER TABLE FoneClienteEmpresa ADD CONSTRAINT FK_FoneClienteEmpresa_0 FOREIGN KEY (idTipoFone) REFERENCES TipoFone (idTipoFone);
-ALTER TABLE FoneClienteEmpresa ADD CONSTRAINT FK_FoneClienteEmpresa_1 FOREIGN KEY (idDDD) REFERENCES DDD (idDDD);
-ALTER TABLE FoneClienteEmpresa ADD CONSTRAINT FK_FoneClienteEmpresa_2 FOREIGN KEY (idDDI) REFERENCES DDI (idDDI);
-ALTER TABLE FoneClienteEmpresa ADD CONSTRAINT FK_FoneClienteEmpresa_3 FOREIGN KEY (idClienteEmpresa) REFERENCES ClienteEmpresa (idClienteEmpresa);
-
-
-ALTER TABLE FoneClientePessoa ADD CONSTRAINT FK_FoneClientePessoa_0 FOREIGN KEY (idClientePessoa) REFERENCES ClientePessoa (idClientePessoa);
-ALTER TABLE FoneClientePessoa ADD CONSTRAINT FK_FoneClientePessoa_1 FOREIGN KEY (idDDI) REFERENCES DDI (idDDI);
-ALTER TABLE FoneClientePessoa ADD CONSTRAINT FK_FoneClientePessoa_2 FOREIGN KEY (idDDD) REFERENCES DDD (idDDD);
-ALTER TABLE FoneClientePessoa ADD CONSTRAINT FK_FoneClientePessoa_3 FOREIGN KEY (idTipoFone) REFERENCES TipoFone (idTipoFone);
+ALTER TABLE FoneCliente ADD CONSTRAINT FK_FoneCliente_0 FOREIGN KEY (idCliente) REFERENCES Cliente (idCliente);
+ALTER TABLE FoneCliente ADD CONSTRAINT FK_FoneCliente_1 FOREIGN KEY (idDDI) REFERENCES DDI (idDDI);
+ALTER TABLE FoneCliente ADD CONSTRAINT FK_FoneCliente_2 FOREIGN KEY (idDDD) REFERENCES DDD (idDDD);
+ALTER TABLE FoneCliente ADD CONSTRAINT FK_FoneCliente_3 FOREIGN KEY (idTipoFone) REFERENCES TipoFone (idTipoFone);
 
 
 ALTER TABLE FoneFuncionario ADD CONSTRAINT FK_FoneFuncionario_0 FOREIGN KEY (idTipoFone) REFERENCES TipoFone (idTipoFone);
@@ -421,35 +343,23 @@ ALTER TABLE FoneFuncionario ADD CONSTRAINT FK_FoneFuncionario_2 FOREIGN KEY (idD
 ALTER TABLE FoneFuncionario ADD CONSTRAINT FK_FoneFuncionario_3 FOREIGN KEY (idFuncionario) REFERENCES Funcionario (idFuncionario);
 
 
-ALTER TABLE VeiculoClienteEmpresa ADD CONSTRAINT FK_VeiculoClienteEmpresa_0 FOREIGN KEY (idClienteEmpresa) REFERENCES ClienteEmpresa (idClienteEmpresa);
+ALTER TABLE Veiculo ADD CONSTRAINT FK_Veiculo_0 FOREIGN KEY (idCliente) REFERENCES Cliente (idCliente);
 
 
-ALTER TABLE VeiculoClientePessoa ADD CONSTRAINT FK_VeiculoClientePessoa_0 FOREIGN KEY (idClientePessoa) REFERENCES ClientePessoa (idClientePessoa);
+ALTER TABLE AtividadeComercial_Cliente ADD CONSTRAINT FK_AtividadeComercial_Cliente_0 FOREIGN KEY (idAtividadeComercial) REFERENCES AtividadeComercial (idAtividadeComercial);
+ALTER TABLE AtividadeComercial_Cliente ADD CONSTRAINT FK_AtividadeComercial_Cliente_1 FOREIGN KEY (idCliente) REFERENCES Cliente (idCliente);
 
 
-ALTER TABLE OrdemServicoClienteEmpresa ADD CONSTRAINT FK_OrdemServicoClienteEmpresa_0 FOREIGN KEY (idEtapa) REFERENCES Etapa (idEtapa);
-ALTER TABLE OrdemServicoClienteEmpresa ADD CONSTRAINT FK_OrdemServicoClienteEmpresa_1 FOREIGN KEY (idVeiculoClientePessoa) REFERENCES VeiculoClienteEmpresa (idVeiculoClientePessoa);
-ALTER TABLE OrdemServicoClienteEmpresa ADD CONSTRAINT FK_OrdemServicoClienteEmpresa_2 FOREIGN KEY (idFuncionario) REFERENCES Funcionario (idFuncionario);
+ALTER TABLE OrdemServico ADD CONSTRAINT FK_OrdemServico_0 FOREIGN KEY (idEtapa) REFERENCES Etapa (idEtapa);
+ALTER TABLE OrdemServico ADD CONSTRAINT FK_OrdemServico_1 FOREIGN KEY (idVeiculo) REFERENCES Veiculo (idVeiculo);
+ALTER TABLE OrdemServico ADD CONSTRAINT FK_OrdemServico_2 FOREIGN KEY (idFuncionario) REFERENCES Funcionario (idFuncionario);
 
 
-ALTER TABLE OrdemServicoClienteEmpresa_Servico ADD CONSTRAINT FK_OrdemServicoClienteEmpresa_Servico_0 FOREIGN KEY (idServico) REFERENCES Servico (idServico);
-ALTER TABLE OrdemServicoClienteEmpresa_Servico ADD CONSTRAINT FK_OrdemServicoClienteEmpresa_Servico_1 FOREIGN KEY (idOrdemServicoClientePessoa) REFERENCES OrdemServicoClienteEmpresa (idOrdemServicoClientePessoa);
+ALTER TABLE OrdemServico_Produto ADD CONSTRAINT FK_OrdemServico_Produto_0 FOREIGN KEY (idOrdemServico) REFERENCES OrdemServico (idOrdemServico);
+ALTER TABLE OrdemServico_Produto ADD CONSTRAINT FK_OrdemServico_Produto_1 FOREIGN KEY (idProduto) REFERENCES Produto (idProduto);
 
 
-ALTER TABLE OrdemServicoClientePessoa ADD CONSTRAINT FK_OrdemServicoClientePessoa_0 FOREIGN KEY (idEtapa) REFERENCES Etapa (idEtapa);
-ALTER TABLE OrdemServicoClientePessoa ADD CONSTRAINT FK_OrdemServicoClientePessoa_1 FOREIGN KEY (idVeiculoClientePessoa) REFERENCES VeiculoClientePessoa (idVeiculoClientePessoa);
-ALTER TABLE OrdemServicoClientePessoa ADD CONSTRAINT FK_OrdemServicoClientePessoa_2 FOREIGN KEY (idFuncionario) REFERENCES Funcionario (idFuncionario);
-
-
-ALTER TABLE OrdemServicoClientePessoa_Produto ADD CONSTRAINT FK_OrdemServicoClientePessoa_Produto_0 FOREIGN KEY (idOrdemServicoClientePessoa) REFERENCES OrdemServicoClientePessoa (idOrdemServicoClientePessoa);
-ALTER TABLE OrdemServicoClientePessoa_Produto ADD CONSTRAINT FK_OrdemServicoClientePessoa_Produto_1 FOREIGN KEY (idProduto) REFERENCES Produto (idProduto);
-
-
-ALTER TABLE OrdemServicoClientePessoa_Servico ADD CONSTRAINT FK_OrdemServicoClientePessoa_Servico_0 FOREIGN KEY (idServico) REFERENCES Servico (idServico);
-ALTER TABLE OrdemServicoClientePessoa_Servico ADD CONSTRAINT FK_OrdemServicoClientePessoa_Servico_1 FOREIGN KEY (idOrdemServicoClientePessoa) REFERENCES OrdemServicoClientePessoa (idOrdemServicoClientePessoa);
-
-
-ALTER TABLE OrderServicoClienteEmpresa_Produto ADD CONSTRAINT FK_OrderServicoClienteEmpresa_Produto_0 FOREIGN KEY (idProduto) REFERENCES Produto (idProduto);
-ALTER TABLE OrderServicoClienteEmpresa_Produto ADD CONSTRAINT FK_OrderServicoClienteEmpresa_Produto_1 FOREIGN KEY (idOrdemServicoClientePessoa) REFERENCES OrdemServicoClienteEmpresa (idOrdemServicoClientePessoa);
+ALTER TABLE OrdemServico_Servico ADD CONSTRAINT FK_OrdemServico_Servico_0 FOREIGN KEY (idServico) REFERENCES Servico (idServico);
+ALTER TABLE OrdemServico_Servico ADD CONSTRAINT FK_OrdemServico_Servico_1 FOREIGN KEY (idOrdemServico) REFERENCES OrdemServico (idOrdemServico);
 
 
