@@ -1,3 +1,3 @@
-public class Administrador extends PessoaFisica {
+public class Administrador {
 
 }

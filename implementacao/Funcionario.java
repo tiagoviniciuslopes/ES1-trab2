@@ -1,4 +1,4 @@
-public class Funcionario extends PessoaJuridica, PessoaFisica {
+public class Funcionario extends PessoaFisica {
 
 	private OrdemServico[] ordemServico;
 
