@@ -1,147 +1,114 @@
 CREATE TABLE AtividadeComercial (
- idAtividadeComercial INT NOT NULL AUTO_INCREMENT,
+ idAtividadeComercial INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  descricaoAtividadeComercial VARCHAR(10)
 );
 
-ALTER TABLE AtividadeComercial ADD CONSTRAINT PK_AtividadeComercial PRIMARY KEY (idAtividadeComercial);
-
-
 CREATE TABLE Bairro (
- idBairro INT NOT NULL AUTO_INCREMENT,
+ idBairro INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  nomeBairro VARCHAR(10) NOT NULL
 );
 
-ALTER TABLE Bairro ADD CONSTRAINT PK_Bairro PRIMARY KEY (idBairro);
-
 
 CREATE TABLE DDD (
- idDDD INT NOT NULL AUTO_INCREMENT,
+ idDDD INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  numeroDDD INT NOT NULL
 );
 
-ALTER TABLE DDD ADD CONSTRAINT PK_DDD PRIMARY KEY (idDDD);
-
 
 CREATE TABLE DDI (
- idDDI INT NOT NULL AUTO_INCREMENT,
+ idDDI INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  numeroDDI INT NOT NULL
 );
 
-ALTER TABLE DDI ADD CONSTRAINT PK_DDI PRIMARY KEY (idDDI);
-
 
 CREATE TABLE Etapa (
- idEtapa INT NOT NULL AUTO_INCREMENT,
+ idEtapa INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  descricaoEtapa VARCHAR(10) NOT NULL
 );
 
-ALTER TABLE Etapa ADD CONSTRAINT PK_Etapa PRIMARY KEY (idEtapa);
-
 
 CREATE TABLE Pais (
- idPais INT NOT NULL AUTO_INCREMENT,
+ idPais INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  nomePais VARCHAR(10) NOT NULL
 );
 
-ALTER TABLE Pais ADD CONSTRAINT PK_Pais PRIMARY KEY (idPais);
-
 
 CREATE TABLE Produto (
- idProduto INT NOT NULL AUTO_INCREMENT,
+ idProduto INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  nomeProduto VARCHAR(10),
  precoBaseProduto FLOAT(10)
 );
 
-ALTER TABLE Produto ADD CONSTRAINT PK_Produto PRIMARY KEY (idProduto);
-
 
 CREATE TABLE Servico (
- idServico INT NOT NULL AUTO_INCREMENT,
+ idServico INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  precoBaseServico FLOAT(10),
  nomeServico VARCHAR(10),
  horasBaseServico FLOAT(10)
 );
 
-ALTER TABLE Servico ADD CONSTRAINT PK_Servico PRIMARY KEY (idServico);
-
 
 CREATE TABLE Sexo (
- idSexo INT NOT NULL AUTO_INCREMENT,
+ idSexo INT NOT NULL PRIMARY KEY  AUTO_INCREMENT,
  descricaoSexo VARCHAR(10) NOT NULL,
  siglaSexo VARCHAR(10) NOT NULL
 );
 
-ALTER TABLE Sexo ADD CONSTRAINT PK_Sexo PRIMARY KEY (idSexo);
-
 
 CREATE TABLE TipoFone (
- idTipoFone INT NOT NULL AUTO_INCREMENT,
+ idTipoFone INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  siglaTipoFone VARCHAR(10) NOT NULL,
  descricaoTipoFone VARCHAR(10)
 );
 
-ALTER TABLE TipoFone ADD CONSTRAINT PK_TipoFone PRIMARY KEY (idTipoFone);
-
 
 CREATE TABLE TipoLogradouro (
- idTipoLogradouro INT NOT NULL AUTO_INCREMENT,
+ idTipoLogradouro INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  siglaTipo VARCHAR(10),
  nomeTIpo VARCHAR(10) NOT NULL
 );
 
-ALTER TABLE TipoLogradouro ADD CONSTRAINT PK_TipoLogradouro PRIMARY KEY (idTipoLogradouro);
-
 
 CREATE TABLE UF (
- idUF INT NOT NULL AUTO_INCREMENT,
+ idUF INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  siglaUF VARCHAR(10),
  nomeUF VARCHAR(10) NOT NULL,
  idPais INT
 );
 
-ALTER TABLE UF ADD CONSTRAINT PK_UF PRIMARY KEY (idUF);
-
 
 CREATE TABLE Cidade (
- idCidade INT NOT NULL AUTO_INCREMENT,
+ idCidade INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  nomeCidade VARCHAR(10) NOT NULL,
  idUF INT
 );
 
-ALTER TABLE Cidade ADD CONSTRAINT PK_Cidade PRIMARY KEY (idCidade);
-
 
 CREATE TABLE Logradouro (
- idLogradouro INT NOT NULL AUTO_INCREMENT,
+ idLogradouro INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  nomeLogradouro VARCHAR(10) NOT NULL,
  idTipoLogradouro INT
 );
 
-ALTER TABLE Logradouro ADD CONSTRAINT PK_Logradouro PRIMARY KEY (idLogradouro);
-
 
 CREATE TABLE OrgaoExpeditor (
- idOrgaoExpeditor INT NOT NULL AUTO_INCREMENT,
+ idOrgaoExpeditor INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  nomeOrgaoExpeditor VARCHAR(10) NOT NULL,
  idUF INT
 );
 
-ALTER TABLE OrgaoExpeditor ADD CONSTRAINT PK_OrgaoExpeditor PRIMARY KEY (idOrgaoExpeditor);
-
 
 CREATE TABLE Endereco (
- idEndereco INT NOT NULL AUTO_INCREMENT,
+ idEndereco INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  cep VARCHAR(10) NOT NULL,
  idBairro INT,
  idCidade INT,
  idLogradouro INT
 );
 
-ALTER TABLE Endereco ADD CONSTRAINT PK_Endereco PRIMARY KEY (idEndereco);
-
 
 CREATE TABLE Funcionario (
- idFuncionario INT NOT NULL AUTO_INCREMENT,
+ idFuncionario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  primeiroNomeFuncionario VARCHAR(10) NOT NULL,
  nomeMeioFuncionario VARCHAR(10),
  ultimoNomeFuncionario VARCHAR(10),
@@ -158,11 +125,9 @@ CREATE TABLE Funcionario (
  descricaoFoto VARCHAR(10)
 );
 
-ALTER TABLE Funcionario ADD CONSTRAINT PK_Funcionario PRIMARY KEY (idFuncionario);
-
 
 CREATE TABLE Cliente (
- idCliente CHAR(10) NOT NULL AUTO_INCREMENT,
+ idCliente INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  primeiroNomeCliente VARCHAR(10) NOT NULL,
  nomeMeioCliente VARCHAR(10),
  ultimoNomeCliente VARCHAR(10) NOT NULL,
@@ -180,58 +145,33 @@ CREATE TABLE Cliente (
  descricaoFoto VARCHAR(10)
 );
 
-ALTER TABLE Cliente ADD CONSTRAINT PK_Cliente PRIMARY KEY (idCliente);
-
-
-CREATE TABLE ClienteEmpresa (
- idClienteEmpresa CHAR(10) NOT NULL,
- primeiroNomeEmpresa VARCHAR(10) NOT NULL,
- nomeMeioEmpresa VARCHAR(10),
- ultimoNomeEmpresa VARCHAR(10),
- nomeAbreviadoEmpresa CHAR(10),
- cnpj VARCHAR(10) NOT NULL,
- numero INT NOT NULL,
- complemento VARCHAR(10),
- idEndereco INT,
- caminhoFoto VARCHAR(10),
- descricaoFoto VARCHAR(10)
-);
-
-ALTER TABLE ClienteEmpresa ADD CONSTRAINT PK_ClienteEmpresa PRIMARY KEY (idClienteEmpresa);
-
 
 CREATE TABLE EmailCliente (
- idEmailCliente INT NOT NULL AUTO_INCREMENT,
+ idEmailCliente INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  descricaoEmail VARCHAR(10) NOT NULL,
- idCliente CHAR(10)
+ idCliente INT
 );
-
-ALTER TABLE EmailCliente ADD CONSTRAINT PK_EmailCliente PRIMARY KEY (idEmailCliente);
 
 
 CREATE TABLE EmailFuncionario (
- idEmailFuncionario INT NOT NULL AUTO_INCREMENT,
+ idEmailFuncionario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  descricaoEmail VARCHAR(10) NOT NULL,
  idFuncionario INT
 );
 
-ALTER TABLE EmailFuncionario ADD CONSTRAINT PK_EmailFuncionario PRIMARY KEY (idEmailFuncionario);
-
 
 CREATE TABLE FoneCliente (
- idFoneCliente INT NOT NULL AUTO_INCREMENT,
+ idFoneCliente INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  numeroFone VARCHAR(10) NOT NULL,
- idCliente CHAR(10),
+ idCliente INT,
  idDDI INT,
  idDDD INT,
  idTipoFone INT
 );
 
-ALTER TABLE FoneCliente ADD CONSTRAINT PK_FoneCliente PRIMARY KEY (idFoneCliente);
-
 
 CREATE TABLE FoneFuncionario (
- idFoneFuncionario INT NOT NULL AUTO_INCREMENT,
+ idFoneFuncionario INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  numeroFone VARCHAR(10) NOT NULL,
  idTipoFone INT,
  idDDD INT,
@@ -239,40 +179,34 @@ CREATE TABLE FoneFuncionario (
  idFuncionario INT
 );
 
-ALTER TABLE FoneFuncionario ADD CONSTRAINT PK_FoneFuncionario PRIMARY KEY (idFoneFuncionario);
-
 
 CREATE TABLE Veiculo (
- idVeiculo INT NOT NULL,
- nomeVeiculo VARCHAR(10) NOT NULL AUTO_INCREMENT,
+ idVeiculo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ nomeVeiculo VARCHAR(10) NOT NULL,
  marcaVeiculo VARCHAR(10) NOT NULL,
  modeloVeiculo VARCHAR(10),
  kmVeiculo INT NOT NULL,
  placaVeiculo VARCHAR(10),
- idCliente CHAR(10)
+ idCliente INT
 );
-
-ALTER TABLE Veiculo ADD CONSTRAINT PK_Veiculo PRIMARY KEY (idVeiculo);
 
 
 CREATE TABLE AtividadeComercial_Cliente (
  idAtividadeComercial INT NOT NULL,
- idCliente CHAR(10) NOT NULL
+ idCliente INT NOT NULL
 );
 
 ALTER TABLE AtividadeComercial_Cliente ADD CONSTRAINT PK_AtividadeComercial_Cliente PRIMARY KEY (idAtividadeComercial,idCliente);
 
 
 CREATE TABLE OrdemServico (
- idOrdemServico INT NOT NULL AUTO_INCREMENT,
+ idOrdemServico INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  data DATE NOT NULL,
  observacoes VARCHAR(10),
  idEtapa INT,
  idVeiculo INT,
  idFuncionario INT
 );
-
-ALTER TABLE OrdemServico ADD CONSTRAINT PK_OrdemServico PRIMARY KEY (idOrdemServico);
 
 
 CREATE TABLE OrdemServico_Produto (
@@ -320,9 +254,6 @@ ALTER TABLE Funcionario ADD CONSTRAINT FK_Funcionario_2 FOREIGN KEY (idOrgaoExpe
 ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_0 FOREIGN KEY (idSexo) REFERENCES Sexo (idSexo);
 ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_1 FOREIGN KEY (idEndereco) REFERENCES Endereco (idEndereco);
 ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_2 FOREIGN KEY (idOrgaoExpeditor) REFERENCES OrgaoExpeditor (idOrgaoExpeditor);
-
-
-ALTER TABLE ClienteEmpresa ADD CONSTRAINT FK_ClienteEmpresa_0 FOREIGN KEY (idEndereco) REFERENCES Endereco (idEndereco);
 
 
 ALTER TABLE EmailCliente ADD CONSTRAINT FK_EmailCliente_0 FOREIGN KEY (idCliente) REFERENCES Cliente (idCliente);
