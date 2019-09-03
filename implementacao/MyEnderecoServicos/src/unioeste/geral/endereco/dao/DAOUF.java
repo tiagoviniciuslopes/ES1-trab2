@@ -3,6 +3,10 @@ package unioeste.geral.endereco.dao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import unioeste.apoio.BD.SQLConnector;
+import unioeste.geral.endereco.bo.Pais;
+import unioeste.geral.endereco.bo.UF;
+
 public class DAOUF {
 
 	public UF obterUFPorId(UF uf, SQLConnector connector) throws Exception{

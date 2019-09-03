@@ -3,6 +3,12 @@ package unioeste.geral.endereco.dao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import unioeste.apoio.BD.SQLConnector;
+import unioeste.geral.endereco.bo.Bairro;
+import unioeste.geral.endereco.bo.Cidade;
+import unioeste.geral.endereco.bo.Endereco;
+import unioeste.geral.endereco.bo.Logradouro;
+
 public class DAOEndereco {
 
 	public Endereco obterEnderecoPorId(Endereco endereco, SQLConnector connector) throws Exception{
@@ -12,7 +18,7 @@ public class DAOEndereco {
 		endereco.setCep(result.getString("cep"));
 		endereco.setIdEndereco(result.getInt("idEndereco"));
 		
-		ColCidade cidade = new ColCidade();
+		Cidade cidade = new Cidade();
 		Bairro bairro = new Bairro();
 		Logradouro logradouro = new Logradouro();
 		
@@ -39,7 +45,7 @@ public class DAOEndereco {
 			e.setCep(result.getString("cep"));
 			e.setIdEndereco(result.getInt("idEndereco"));
 			
-			ColCidade cidade = new ColCidade();
+			Cidade cidade = new Cidade();
 			Bairro bairro = new Bairro();
 			Logradouro logradouro = new Logradouro();
 			

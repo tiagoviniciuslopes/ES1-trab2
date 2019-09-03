@@ -1,9 +1,6 @@
 package unioeste.geral.common.bo;
 import java.io.Serializable;
 
-import unioeste.gera.oficina.bo.Veiculo;
-import unioeste.geral.endereco.bo.EnderecoEspecifico;
-
 public abstract class Pessoa implements Serializable{
 
 	/**
@@ -26,8 +23,6 @@ public abstract class Pessoa implements Serializable{
 	private Fone[] fone;
 
 	private EnderecoEspecifico enderecoEspecifico;
-
-	private Veiculo[] veiculo;
 
 	public int getIdPessoa() {
 		return idPessoa;
@@ -91,14 +86,6 @@ public abstract class Pessoa implements Serializable{
 
 	public void setEnderecoEspecifico(EnderecoEspecifico enderecoEspecifico) {
 		this.enderecoEspecifico = enderecoEspecifico;
-	}
-
-	public Veiculo[] getVeiculo() {
-		return veiculo;
-	}
-
-	public void setVeiculo(Veiculo[] veiculo) {
-		this.veiculo = veiculo;
 	}
 
 }

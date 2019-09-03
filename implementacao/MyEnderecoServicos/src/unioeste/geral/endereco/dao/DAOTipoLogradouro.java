@@ -3,6 +3,9 @@ package unioeste.geral.endereco.dao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import unioeste.apoio.BD.SQLConnector;
+import unioeste.geral.endereco.bo.TipoLogradouro;
+
 public class DAOTipoLogradouro {
 
 	public TipoLogradouro obterTipoLogradouroPorId(TipoLogradouro tl, SQLConnector connector) throws Exception{

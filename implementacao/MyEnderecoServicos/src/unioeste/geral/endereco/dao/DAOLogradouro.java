@@ -3,6 +3,10 @@ package unioeste.geral.endereco.dao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import unioeste.apoio.BD.SQLConnector;
+import unioeste.geral.endereco.bo.Logradouro;
+import unioeste.geral.endereco.bo.TipoLogradouro;
+
 public class DAOLogradouro {
 
 	public Logradouro obterLogradouroPorId(Logradouro logradouro, SQLConnector connector) throws Exception{
@@ -18,7 +22,7 @@ public class DAOLogradouro {
 		return logradouro;
 	}
 	
-	public ArrayList<Logradouro> obterTodosUFs(SQLConnector connector) throws Exception{
+	public ArrayList<Logradouro> obterTodosLogradouros(SQLConnector connector) throws Exception{
 		ArrayList<Logradouro> logradouro = new ArrayList<Logradouro>();
 		
 		String query = "SELECT * FROM Logradouro;";

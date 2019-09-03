@@ -3,6 +3,9 @@ package unioeste.geral.endereco.dao;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import unioeste.apoio.BD.SQLConnector;
+import unioeste.geral.endereco.bo.Bairro;
+
 public class DAOBairro {
 
 	public Bairro obterBairroPorId(Bairro bairro, SQLConnector connector) throws Exception{
