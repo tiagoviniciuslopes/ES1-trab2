@@ -1,6 +1,8 @@
-package unioeste.geral.endereco.bo;
+package unioeste.geral.common.bo;
 
 import java.io.Serializable;
+
+import unioeste.geral.endereco.bo.Endereco;
 
 public class EnderecoEspecifico implements Serializable{
 
