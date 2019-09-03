@@ -45,6 +45,13 @@ public class UCEnderecoGeralServicos {
 		connector.close();
 	}
 	
+	public Endereco obterEnderecoExterno(String site) {
+		
+		//pesquisa em um site
+		
+		return new Endereco();
+	}
+	
 	public Cidade obterCidadePorId(Cidade cidade,  SQLConnector connector) {
 		ColCidade colCidade = new ColCidade();
 		ColUF colUF = new ColUF();
