@@ -15,6 +15,7 @@ public class DAOUF {
 		result.next();
 		uf.setNome(result.getString("nomeUF"));
 		uf.setIdUF(result.getInt("idUF"));
+		uf.setSigla(result.getString("siglaUF"));
 		Pais pais = new Pais();
 		pais.setIdPais(result.getInt("idPais"));
 		uf.setPais(pais);
@@ -33,6 +34,7 @@ public class DAOUF {
 			
 			uf_aux.setNome(result.getString("nomeUF"));
 			uf_aux.setIdUF(result.getInt("idUF"));
+			uf_aux.setSigla(result.getString("siglaUF"));
 			Pais pais = new Pais();
 			pais.setIdPais(result.getInt("idPais"));
 			uf_aux.setPais(pais);
