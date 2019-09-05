@@ -1,4 +1,7 @@
 package unioeste.geral.common.bo;
+
+import unioeste.geral.common.exception.NegocioException;
+
 public abstract class PessoaFisica extends Pessoa {
 
 	/**
@@ -64,6 +67,21 @@ public abstract class PessoaFisica extends Pessoa {
 
 	public void setDocIdentidade(DocIdentidade docIdentidade) {
 		this.docIdentidade = docIdentidade;
+	}
+	
+	public void validaObjeto() throws NegocioException{
+		
+		if(primeiroNome.length() < 2) {
+			throw new NegocioException("Primeiro nome invalido");
+		}
+		
+		if(ultimoNome.length() < 2) {
+			throw new NegocioException("Ultimo nome invalido");
+		}
+		
+		if(cpf == null) {
+			throw new NegocioException("CPF invalido");
+		}
 	}
 
 }

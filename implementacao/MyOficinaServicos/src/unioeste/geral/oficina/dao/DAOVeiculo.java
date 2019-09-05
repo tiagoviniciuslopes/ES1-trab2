@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import unioeste.apoio.BD.SQLConnector;
+import unioeste.geral.oficina.bo.Placa;
 import unioeste.geral.oficina.bo.Veiculo;;
 
 public class DAOVeiculo {
@@ -15,11 +16,13 @@ public class DAOVeiculo {
 		result.next();
 		
 		veiculo.setIdVeiculo(result.getInt("idVeiculo")); //verifica esse GetInt que eu fiz, se pode ser usado dessa maneira
-		veiculo.setMarca(result.getString("Marca"));
+		veiculo.setMarca(result.getString("marcaVeiculo"));
 		veiculo.setNomeVeiculo(result.getString("nomeVeiculo"));
-		veiculo.setModelo(result.getString("modelo"));
+		veiculo.setModelo(result.getString("modeloVeiculo"));
 		veiculo.setKmVeiculo(result.getInt("kmVeiculo")); //verifica esse GetInt que eu fiz, se pode ser usado dessa maneira
-		
+		Placa p = new Placa();
+		p.setPlaca(result.getString("placaVeiculo"));
+		veiculo.setPlaca(p);
 		
 		return veiculo;	
 	}
@@ -33,14 +36,35 @@ public class DAOVeiculo {
 		while(result.next()) {
 			Veiculo v = new Veiculo();
 			v.setIdVeiculo(result.getInt("idVeiculo")); //verifica esse GetInt que eu fiz, se pode ser usado dessa maneira
-			v.setMarca(result.getString("Marca"));
+			v.setMarca(result.getString("marcaVeiculo"));
 			v.setNomeVeiculo(result.getString("nomeVeiculo"));
-			v.setModelo(result.getString("modelo"));
+			v.setModelo(result.getString("modeloVeiculo"));
 			v.setKmVeiculo(result.getInt("kmVeiculo")); //verifica esse GetInt que eu fiz, se pode ser usado dessa maneira
+			Placa p = new Placa();
+			p.setPlaca(result.getString("placaVeiculo"));
+			v.setPlaca(p);
 			
 			veiculo.add(v);	
 		}
 		return veiculo;
 	}
+	
+	public Veiculo obterVeiculoPorPlaca(Veiculo veiculo, SQLConnector connector) throws Exception{
+		String query="SELECT *FROM Veiculo WHERE placaVeiculo = '" +veiculo.getPlaca().getPlaca()+"';";
+		ResultSet result = connector.executeQuery(query);
+		result.next();
+		
+		veiculo.setIdVeiculo(result.getInt("idVeiculo")); //verifica esse GetInt que eu fiz, se pode ser usado dessa maneira
+		veiculo.setMarca(result.getString("marcaVeiculo"));
+		veiculo.setNomeVeiculo(result.getString("nomeVeiculo"));
+		veiculo.setModelo(result.getString("modeloVeiculo"));
+		veiculo.setKmVeiculo(result.getInt("kmVeiculo")); //verifica esse GetInt que eu fiz, se pode ser usado dessa maneira
+		Placa p = new Placa();
+		p.setPlaca(result.getString("placaVeiculo"));
+		veiculo.setPlaca(p);
+		
+		return veiculo;	
 	}
+	
+}
 

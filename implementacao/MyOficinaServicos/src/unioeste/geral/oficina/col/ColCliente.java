@@ -11,7 +11,6 @@ public class ColCliente {
 		
 		c = dao.obterClientePorCpf(c,connector);	
 		c.setClienteEmpresa(null);
-		
 		return c;
 	}
 	
@@ -20,20 +19,21 @@ public class ColCliente {
 		
 		c =  dao.obterClientePorCnpj(c,connector);
 		c.setClientePessoa(null);
-		
 		return c;		
 	}
 	
 	public Cliente obterClienteEmpresaPorId(Cliente c, SQLConnector connector) throws Exception{
 		DAOCliente dao = new DAOCliente();
 		
-		return dao.obterClienteEmpresaPorId(c,connector);		
+		c = dao.obterClienteEmpresaPorId(c,connector);	
+		return c;
 	}
 	
 	public Cliente obterClientePessoaPorId(Cliente c, SQLConnector connector) throws Exception{
 		DAOCliente dao = new DAOCliente();
 		
-		return dao.obterClientePessoaPorId(c,connector);		
+		c = dao.obterClientePessoaPorId(c,connector);	
+		return c;
 	}
 	
 	public void inserirClientePessoa(Cliente c, SQLConnector connector) throws Exception{

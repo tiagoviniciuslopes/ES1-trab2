@@ -1,4 +1,7 @@
 package unioeste.geral.common.bo;
+
+import unioeste.geral.common.exception.*;
+
 public abstract class PessoaJuridica extends Pessoa {
 
 	/**
@@ -34,6 +37,17 @@ public abstract class PessoaJuridica extends Pessoa {
 
 	public void setAtividadeComercial(AtividadeComercial[] atividadeComercial) {
 		this.atividadeComercial = atividadeComercial;
+	}
+	
+	public void validaObjeto() throws NegocioException{
+		
+		if(super.getNomeCompleto().length() < 2) {
+			throw new NegocioException("Nome invalido");
+		}
+		
+		if(cnpj == null) {
+			throw new NegocioException("CNPJ invalido");
+		}
 	}
 
 }

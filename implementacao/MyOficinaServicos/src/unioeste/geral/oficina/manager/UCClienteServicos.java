@@ -70,6 +70,7 @@ public class UCClienteServicos {
 		
 		f.setFone(fones.toArray(new Fone[fones.size()]));
 		
+		f.validaObjeto();
 		c.setClientePessoa(f);
 		
 		connector.close();
@@ -119,6 +120,7 @@ public class UCClienteServicos {
 		
 		f.setFone(fones.toArray(new Fone[fones.size()]));
 		
+		f.validaObjeto();
 		c.setClientePessoa(f);
 		
 		connector.close();
@@ -172,6 +174,7 @@ public class UCClienteServicos {
 		ArrayList<AtividadeComercial> atividades = colAtividadeComercial.obterAtividadeComercialPorEmpresa(f, connector);
 		f.setAtividadeComercial(atividades.toArray(new AtividadeComercial[atividades.size()]));
 		
+		f.validaObjeto();
 		c.setClienteEmpresa(f);
 		
 		connector.close();
@@ -225,6 +228,7 @@ public class UCClienteServicos {
 		ArrayList<AtividadeComercial> atividades = colAtividadeComercial.obterAtividadeComercialPorEmpresa(f, connector);
 		f.setAtividadeComercial(atividades.toArray(new AtividadeComercial[atividades.size()]));
 		
+		f.validaObjeto();
 		c.setClienteEmpresa(f);
 		
 		connector.close();

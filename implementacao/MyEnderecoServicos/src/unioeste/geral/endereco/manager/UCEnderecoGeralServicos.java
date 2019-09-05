@@ -28,6 +28,7 @@ public class UCEnderecoGeralServicos {
 		endereco.setCidade(obterCidadePorId(endereco.getCidade(),connector));		
 		
 		connector.close();
+		endereco.validaObjeto();
 		return endereco;
 	}
 	
@@ -41,7 +42,8 @@ public class UCEnderecoGeralServicos {
 		for(Endereco e : enderecos) {
 			e.setBairro(colBairro.obterBairroPorId(e.getBairro(), connector));
 			e.setLogradouro(obterLogradouroPorId(e.getLogradouro(), connector));
-			e.setCidade(obterCidadePorId(e.getCidade(),connector));		
+			e.setCidade(obterCidadePorId(e.getCidade(),connector));
+			e.validaObjeto();
 		}
 		
 		connector.close();

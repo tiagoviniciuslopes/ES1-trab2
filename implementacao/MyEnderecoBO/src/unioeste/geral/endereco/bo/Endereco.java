@@ -2,6 +2,8 @@ package unioeste.geral.endereco.bo;
 
 import java.io.Serializable;
 
+import unioeste.geral.endereco.exception.EnderecoException;
+
 public class Endereco implements Serializable{
 
 	/**
@@ -57,6 +59,23 @@ public class Endereco implements Serializable{
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
+	}
+	
+	public void validaObjeto() throws Exception{
+		if(cep.length() != 8) {
+			throw new EnderecoException("CEP invalido");
+		}
+		if(bairro == null) {
+			throw new EnderecoException("Bairro invalido");
+		}
+		if(cidade == null) {
+			throw new EnderecoException("Cidade invalida");
+		}
+		if(logradouro == null) {
+			throw new EnderecoException("Logradouro invalido");
+		}
+		
+		
 	}
 
 }

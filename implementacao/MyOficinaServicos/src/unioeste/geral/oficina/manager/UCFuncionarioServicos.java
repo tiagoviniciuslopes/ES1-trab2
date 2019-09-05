@@ -54,6 +54,7 @@ public class UCFuncionarioServicos {
 		f.setFone(fones.toArray(new Fone[fones.size()]));
 		
 		connector.close();
+		f.validaObjeto();
 		return f;
 		
 	}
@@ -91,6 +92,7 @@ public class UCFuncionarioServicos {
 		f.setFone(fones.toArray(new Fone[fones.size()]));
 		
 		connector.close();
+		f.validaObjeto();
 		return f;
 		
 	}
