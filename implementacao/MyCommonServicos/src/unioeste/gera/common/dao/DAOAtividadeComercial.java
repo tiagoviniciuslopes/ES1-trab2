@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import unioeste.apoio.BD.SQLConnector;
 import unioeste.geral.common.bo.AtividadeComercial;
+import unioeste.geral.common.bo.Pessoa;
 
 public class DAOAtividadeComercial {
 	
@@ -28,6 +29,23 @@ public class DAOAtividadeComercial {
 			AtividadeComercial ac = new AtividadeComercial();
 			
 			ac.setDescricao(result.getString("descricaoAtividadeComercial"));
+			ac.setIdAtividadeComercial(result.getInt("idAtividadeComercial"));
+			
+			atividadeComercial.add(ac);
+		}
+		
+		return atividadeComercial;
+	}
+	
+	public ArrayList<AtividadeComercial> obterAtividadeComercialPorEmpresa(Pessoa pessoa, SQLConnector connector) throws Exception{
+		ArrayList<AtividadeComercial> atividadeComercial = new ArrayList<AtividadeComercial>();
+		
+		String query = "SELECT * FROM AtividadeComercial_Cliente WHERE idCliente = " + pessoa.getIdPessoa() + ";";
+		ResultSet result = connector.executeQuery(query);
+		
+		while (result.next()) {
+			AtividadeComercial ac = new AtividadeComercial();
+			
 			ac.setIdAtividadeComercial(result.getInt("idAtividadeComercial"));
 			
 			atividadeComercial.add(ac);
