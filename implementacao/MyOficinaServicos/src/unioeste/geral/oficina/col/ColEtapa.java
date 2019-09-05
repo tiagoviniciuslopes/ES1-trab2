@@ -12,8 +12,8 @@ public class ColEtapa {
 		return dao.obterEtapaId(etapa,connector);
 	}
 	
-	public ArrayList<Etapa> obterTodasEtapasId(SQLConnector connector) throws Exception{
+	public ArrayList<Etapa> obterTodasEtapas(SQLConnector connector) throws Exception{
 		DAOEtapa dao = new DAOEtapa();
-		return dao.obterTodasEtapasId(connector);
+		return dao.obterTodasEtapas(connector);
 	}
 }

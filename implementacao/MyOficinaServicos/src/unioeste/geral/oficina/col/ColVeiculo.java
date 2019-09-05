@@ -15,7 +15,7 @@ public class ColVeiculo {
 		return dao.obterVeiculoPorCliente(pessoa, connector);
 	}
 	
-	public Veiculo obterVeiculoPorID(Veiculo veiculo, SQLConnector connector) throws Exception{
+	public Veiculo obterVeiculoPorId(Veiculo veiculo, SQLConnector connector) throws Exception{
 		DAOVeiculo dao = new DAOVeiculo();
 		
 		return dao.obterVeiculoPorId(veiculo,connector);		
@@ -24,5 +24,11 @@ public class ColVeiculo {
 	public ArrayList<Veiculo> obterTodosVeiculos(SQLConnector connector) throws Exception{
 		DAOVeiculo dao = new DAOVeiculo();
 		return dao.obterTodosVeiculos(connector);
+	}
+	
+	public Veiculo obterVeiculoPorPlaca(Veiculo veiculo, SQLConnector connector) throws Exception{
+		DAOVeiculo dao = new DAOVeiculo();
+		
+		return dao.obterVeiculoPorPlaca(veiculo,connector);		
 	}
 }

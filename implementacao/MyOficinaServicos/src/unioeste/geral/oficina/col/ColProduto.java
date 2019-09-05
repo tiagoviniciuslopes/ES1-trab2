@@ -13,8 +13,8 @@ public class ColProduto {
 			return dao.obterProdutoPorId(produto,connector);
 		}
 		
-		public ArrayList<Produto> obterTodosProdutosId(SQLConnector connector) throws Exception{
+		public ArrayList<Produto> obterTodosProdutos(SQLConnector connector) throws Exception{
 			DAOProduto dao = new DAOProduto();
-			return dao.obterTodosProdutosId(connector);
+			return dao.obterTodosProdutos(connector);
 		}
 }

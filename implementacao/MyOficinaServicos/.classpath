@@ -6,8 +6,8 @@
 	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyInfraAPI/mysql-connector-java-5.1.46-bin.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyEnderecoBO/MyEnderecoBO.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyEnderecoServicos/MyEnderecoServicos.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyOficinaBO/MyOficinaBO.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyCommonServicos/MyCommonServicos.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyCommonBO/MyCommonBO.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyOficinaBO/MyOficinaBO.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

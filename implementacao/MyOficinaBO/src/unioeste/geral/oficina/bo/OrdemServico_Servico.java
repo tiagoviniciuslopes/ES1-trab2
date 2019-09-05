@@ -8,6 +8,8 @@ public class OrdemServico_Servico implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private int idOrdemServico;
 
 	private float precoServico;
 
@@ -37,6 +39,14 @@ public class OrdemServico_Servico implements Serializable{
 
 	public void setServico(Servico servico) {
 		this.servico = servico;
+	}
+
+	public int getIdOrdemServico() {
+		return idOrdemServico;
+	}
+
+	public void setIdOrdemServico(int idOrdemServico) {
+		this.idOrdemServico = idOrdemServico;
 	}
 
 }

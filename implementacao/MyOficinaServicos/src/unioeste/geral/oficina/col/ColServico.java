@@ -13,8 +13,8 @@ public class ColServico {
 		return dao.obterServicoPorId(servico, connector);
 	}
 	
-	public ArrayList<Servico> obterTodosServicosId(SQLConnector connector) throws Exception{
+	public ArrayList<Servico> obterTodosServicos(SQLConnector connector) throws Exception{
 		DAOServico dao = new DAOServico();
-		return dao.obterTodosServicosId(connector);
+		return dao.obterTodosServicos(connector);
 	}
 }

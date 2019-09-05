@@ -13,7 +13,7 @@ public class DAOVeiculo {
 	
 	
 	public  ArrayList<Veiculo> obterVeiculoPorCliente(Pessoa pessoa, SQLConnector connector) throws Exception{
-ArrayList<Veiculo> veiculo = new ArrayList<Veiculo>();
+		ArrayList<Veiculo> veiculo = new ArrayList<Veiculo>();
 		
 		String query="Select * FROM Veiculo WHERE idCliente = " + pessoa.getIdPessoa()+ ";" ;
 		ResultSet result = connector.executeQuery(query);

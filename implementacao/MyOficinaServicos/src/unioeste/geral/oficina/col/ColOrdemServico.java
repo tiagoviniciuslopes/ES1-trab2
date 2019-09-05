@@ -9,15 +9,20 @@ import unioeste.geral.oficina.dao.DAOOrdemServico;
 public class ColOrdemServico {
 	public OrdemServico ObterOrdemServicoId(OrdemServico ordemservico, SQLConnector connector) throws Exception{
 
-	DAOOrdemServico dao = new DAOOrdemServico();
-	return dao.ObterOrdemServicoId(ordemservico, connector);
+		DAOOrdemServico dao = new DAOOrdemServico();
+		return dao.ObterOrdemServicoId(ordemservico, connector);
 	
 	}
 	
-	public ArrayList<OrdemServico> obterTodosOrdemServicoId(SQLConnector connector) throws Exception{
+	public ArrayList<OrdemServico> obterTodosOrdemServico(SQLConnector connector) throws Exception{
 
 		DAOOrdemServico dao = new DAOOrdemServico();
-		return dao.obterTodosOrdemServicoId(connector);
+		return dao.obterTodosOrdemServico(connector);
 	
+	}
+	
+	public void atualizarEtapa(OrdemServico os, SQLConnector connector) throws Exception{
+		DAOOrdemServico dao = new DAOOrdemServico();
+		dao.atualizarEtapa(os, connector);
 	}
 }
