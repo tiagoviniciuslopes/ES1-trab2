@@ -4,9 +4,17 @@ import java.util.ArrayList;
 
 import unioeste.apoio.BD.SQLConnector;
 import unioeste.geral.oficina.dao.DAOVeiculo;
+import unioeste.geral.common.bo.Pessoa;
 import unioeste.geral.oficina.bo.Veiculo;
 
 public class ColVeiculo {
+	
+	
+	public ArrayList<Veiculo> obterVeiculoPorCliente(Pessoa pessoa, SQLConnector connector) throws Exception{
+		DAOVeiculo dao = new DAOVeiculo();
+		return dao.obterVeiculoPorCliente(pessoa, connector);
+	}
+	
 	public Veiculo obterVeiculoPorID(Veiculo veiculo, SQLConnector connector) throws Exception{
 		DAOVeiculo dao = new DAOVeiculo();
 		

@@ -212,4 +212,12 @@ public class DAOCliente {
 		
 	}
 	
+	public void removerClientePessoa(Cliente c, SQLConnector connector) throws Exception{
+			//
+	}
+	
+	public void removerClienteEmpresa(Cliente c, SQLConnector connector) throws Exception{
+		//
+}
+	
 }
