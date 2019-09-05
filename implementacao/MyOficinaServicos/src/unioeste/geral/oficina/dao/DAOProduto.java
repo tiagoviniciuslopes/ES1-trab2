@@ -21,7 +21,7 @@ public class DAOProduto {
 	public ArrayList<Produto> obterTodosProdutos(SQLConnector connector) throws Exception{
 		ArrayList<Produto> produto = new ArrayList<Produto>();
 		
-		String query="Select * FROM Produto";
+		String query="SELECT * FROM Produto";
 		ResultSet result = connector.executeQuery(query);
 		while(result.next()) {
 			Produto p = new Produto();

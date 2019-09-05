@@ -15,7 +15,7 @@ public class DAOVeiculo {
 	public  ArrayList<Veiculo> obterVeiculoPorCliente(Pessoa pessoa, SQLConnector connector) throws Exception{
 		ArrayList<Veiculo> veiculo = new ArrayList<Veiculo>();
 		
-		String query="Select * FROM Veiculo WHERE idCliente = " + pessoa.getIdPessoa()+ ";" ;
+		String query="SELECT * FROM Veiculo WHERE idCliente = " + pessoa.getIdPessoa()+ ";" ;
 		ResultSet result = connector.executeQuery(query);
 
 		while(result.next()) {
@@ -54,7 +54,7 @@ public class DAOVeiculo {
 	public ArrayList<Veiculo> obterTodosVeiculos(SQLConnector connector) throws Exception{
 		ArrayList<Veiculo> veiculo = new ArrayList<Veiculo>();
 		
-		String query="Select * FROM Veiculo";
+		String query="SELECT * FROM Veiculo";
 		ResultSet result = connector.executeQuery(query);
 
 		while(result.next()) {

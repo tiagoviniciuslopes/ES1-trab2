@@ -22,7 +22,7 @@ public class DAOServico {
 		
 		public ArrayList<Servico> obterTodosServicos(SQLConnector connector) throws Exception{
 			ArrayList<Servico> servico = new ArrayList<Servico>();
-			String query = "Select * FROM Servico";
+			String query = "SELECT * FROM Servico";
 			ResultSet result = connector.executeQuery(query);
 			
 			while(result.next()){
