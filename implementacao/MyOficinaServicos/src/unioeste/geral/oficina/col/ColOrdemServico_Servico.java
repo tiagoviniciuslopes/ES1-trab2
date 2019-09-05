@@ -14,4 +14,9 @@ public class ColOrdemServico_Servico {
 		return dao.obterOrdemServicoServicoPorId(ordemservico_servico, connector);
 	}
 	
+	public void inserirOrdemServicoServico(OrdemServico_Servico ordemservico_servico, SQLConnector connector) throws Exception{
+		DAOOrdemServico_Servico dao = new DAOOrdemServico_Servico();
+		
+		dao.inserirOrdemServicoServico(ordemservico_servico, connector);
+	}
 }

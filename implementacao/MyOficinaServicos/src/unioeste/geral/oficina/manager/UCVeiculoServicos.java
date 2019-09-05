@@ -46,4 +46,14 @@ public class UCVeiculoServicos {
 		return v;
 	}
 	
+	public Veiculo inserirVeiculo(Veiculo veiculo) throws Exception {
+		SQLConnector connector = new SQLConnector();
+		ColVeiculo colVeiculo = new ColVeiculo();
+		
+		Veiculo v = colVeiculo.inserirVeiculo(veiculo, connector);
+		connector.close();
+		return v;
+		
+	}
+	
 }

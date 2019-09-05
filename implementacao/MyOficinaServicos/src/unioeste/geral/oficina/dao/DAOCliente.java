@@ -181,7 +181,7 @@ public class DAOCliente {
 		return cliente;
 	}
 	
-	public void inserirClientePessoa(Cliente c, SQLConnector connector) throws Exception{
+	public Cliente inserirClientePessoa(Cliente c, SQLConnector connector) throws Exception{
 		
 		ClientePessoa cp = c.getClientePessoa();
 		
@@ -195,9 +195,13 @@ public class DAOCliente {
 		
 		connector.executeUpdate(query);
 		
+		c = obterClientePorCpf(c,connector);
+		
+		return c;
+		
 	}
 	
-	public void inserirClienteEmpresa(Cliente c, SQLConnector connector) throws Exception{
+	public Cliente inserirClienteEmpresa(Cliente c, SQLConnector connector) throws Exception{
 		
 		ClienteEmpresa ce = c.getClienteEmpresa();
 		
@@ -210,6 +214,10 @@ public class DAOCliente {
 		
 		connector.executeUpdate(query);
 		
+		c = obterClientePorCnpj(c,connector);
+		
+		return c;
+		
 	}
 	
 	public void removerClientePessoa(Cliente c, SQLConnector connector) throws Exception{
@@ -218,6 +226,6 @@ public class DAOCliente {
 	
 	public void removerClienteEmpresa(Cliente c, SQLConnector connector) throws Exception{
 		//
-}
+	}
 	
 }

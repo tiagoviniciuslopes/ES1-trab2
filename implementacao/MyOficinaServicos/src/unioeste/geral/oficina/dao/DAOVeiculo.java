@@ -90,5 +90,19 @@ public class DAOVeiculo {
 		return veiculo;	
 	}
 	
+	public Veiculo inserirVeiculo(Veiculo veiculo, SQLConnector connector) throws Exception{
+	
+		String query = "INSERT INTO Veiculo (marcaVeiculo,nomeVeiculo,modeloVeiculo,kmVeiculo,placaVeiculo)"
+				+ " VALUES ('"+veiculo.getMarca()+"','"+veiculo.getNomeVeiculo()+"','"+veiculo.getModelo()+"',"+veiculo.getKmVeiculo()+",'"+veiculo.getPlaca().getPlaca()+"');";
+		
+		connector.executeQuery(query);
+		
+		veiculo = obterVeiculoPorPlaca(veiculo,connector);
+		
+		return veiculo;
+	}
+	
+	
+	
 }
 

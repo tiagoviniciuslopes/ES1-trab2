@@ -31,4 +31,10 @@ public class ColVeiculo {
 		
 		return dao.obterVeiculoPorPlaca(veiculo,connector);		
 	}
+	
+	public Veiculo inserirVeiculo (Veiculo veiculo, SQLConnector connector) throws Exception{
+		DAOVeiculo dao = new DAOVeiculo();
+		
+		return dao.inserirVeiculo(veiculo,connector);
+	}
 }

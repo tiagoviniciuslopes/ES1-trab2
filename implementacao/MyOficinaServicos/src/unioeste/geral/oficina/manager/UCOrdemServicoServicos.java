@@ -3,17 +3,17 @@ package unioeste.geral.oficina.manager;
 import java.util.ArrayList;
 
 import unioeste.apoio.BD.SQLConnector;
+import unioeste.geral.oficina.bo.Etapa;
+import unioeste.geral.oficina.bo.Funcionario;
 import unioeste.geral.oficina.bo.OrdemServico;
 import unioeste.geral.oficina.bo.OrdemServico_Produto;
 import unioeste.geral.oficina.bo.OrdemServico_Servico;
 import unioeste.geral.oficina.col.ColEtapa;
-import unioeste.geral.oficina.col.ColFuncionario;
 import unioeste.geral.oficina.col.ColOrdemServico;
 import unioeste.geral.oficina.col.ColOrdemServico_Produto;
 import unioeste.geral.oficina.col.ColOrdemServico_Servico;
 import unioeste.geral.oficina.col.ColProduto;
 import unioeste.geral.oficina.col.ColServico;
-import unioeste.geral.oficina.col.ColVeiculo;
 
 public class UCOrdemServicoServicos {
 
@@ -29,7 +29,7 @@ public class UCOrdemServicoServicos {
 		ColProduto colProduto = new ColProduto();
 		
 		
-		os = colOrdemServico.ObterOrdemServicoId(os, connector);
+		os = colOrdemServico.obterOrdemServicoId(os, connector);
 		os.setEtapa(colEtapa.obterEtapaId(os.getEtapa(), connector));
 		
 		OrdemServico_Servico oss_aux = new OrdemServico_Servico();
@@ -49,16 +49,46 @@ public class UCOrdemServicoServicos {
 		os.setFuncionario(ucf.obterFuncionarioPorId(os.getFuncionario()));
 		os.setVeiculo(ucv.obterVeiculoPorId(os.getVeiculo()));
 		
-		/*private Etapa etapa;
+		connector.close();
+		return os;
+	}
 	
-		private OrdemServico_Servico[] ordemServico_Servico;
+	public OrdemServico inserirOrdemServico(OrdemServico os) throws Exception{
+		SQLConnector connector = new SQLConnector();
+		ColOrdemServico colOS = new ColOrdemServico();
+		ColOrdemServico_Servico colOSS = new ColOrdemServico_Servico();
+		ColOrdemServico_Produto colOSP = new ColOrdemServico_Produto();
+		
+		Etapa e = new Etapa();
+		e.setIdEtapa(1);
+		Funcionario f = new Funcionario();
+		f.setIdPessoa(1);
+		
+		os = colOS.inserirOrdemServico(os, connector);
+		
+		for(OrdemServico_Servico oss : os.getOrdemServico_Servico()) {
+			oss.setIdOrdemServico(os.getIdOrdemServico());
+			colOSS.inserirOrdemServicoServico(oss, connector);
+		}
+		
+		for(OrdemServico_Produto osp : os.getOrdemServico_Produto()) {
+			osp.setIdOrdemServico(os.getIdOrdemServico());
+			colOSP.inserirOrdemServicoProduto(osp, connector);
+		}
+		
+		connector.close();
+		return os;
+	}
 	
-		private OrdemServico_Produto[] ordemServico_Produto;
+	public OrdemServico atualizarEtapa(OrdemServico os) throws Exception{
+		SQLConnector connector = new SQLConnector();
+		ColOrdemServico colOS = new ColOrdemServico();
 		
-		private Funcionario funcionario;
+		Etapa e = os.getEtapa();
+		e.setIdEtapa(e.getIdEtapa()+1);
+		os.setEtapa(e);
 		
-		private Veiculo veiculo;*/
-		
+		colOS.atualizarEtapa(os, connector);
 		connector.close();
 		return os;
 	}

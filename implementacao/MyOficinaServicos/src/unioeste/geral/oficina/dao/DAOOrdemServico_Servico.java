@@ -30,4 +30,10 @@ public class DAOOrdemServico_Servico {
 			
 	}
 	
+	public void inserirOrdemServicoServico(OrdemServico_Servico oss, SQLConnector connector) throws Exception{
+		String query = "INSERT INTO OrdemServico_Servico (idOrdemServico, idServico, precoServico, horasServico)"
+				+ " VALUES ("+oss.getIdOrdemServico()+","+oss.getServico()+","+oss.getPrecoServico()+","+oss.getHorasServico()+");";
+		connector.executeQuery(query);
+	}
+	
 }

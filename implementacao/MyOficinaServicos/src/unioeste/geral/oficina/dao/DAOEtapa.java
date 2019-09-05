@@ -12,8 +12,8 @@ public class DAOEtapa {
 		String query = "SELECT * FROM Etapa WHERE idEtapa = " +etapa.getIdEtapa()+";";
 		ResultSet result = connector.executeQuery(query);
 		result.next();
-			etapa.setIdEtapa(result.getInt("idEtapa"));
-			etapa.setDescricao(result.getString("descricaoEtapa"));
+		etapa.setIdEtapa(result.getInt("idEtapa"));
+		etapa.setDescricao(result.getString("descricaoEtapa"));
 		return etapa;
 			
 	}

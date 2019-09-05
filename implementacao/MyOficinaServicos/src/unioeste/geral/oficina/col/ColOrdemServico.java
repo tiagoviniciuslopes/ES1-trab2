@@ -7,7 +7,7 @@ import unioeste.geral.oficina.bo.OrdemServico;
 import unioeste.geral.oficina.dao.DAOOrdemServico;
 
 public class ColOrdemServico {
-	public OrdemServico ObterOrdemServicoId(OrdemServico ordemservico, SQLConnector connector) throws Exception{
+	public OrdemServico obterOrdemServicoId(OrdemServico ordemservico, SQLConnector connector) throws Exception{
 
 		DAOOrdemServico dao = new DAOOrdemServico();
 		return dao.ObterOrdemServicoId(ordemservico, connector);
@@ -24,5 +24,10 @@ public class ColOrdemServico {
 	public void atualizarEtapa(OrdemServico os, SQLConnector connector) throws Exception{
 		DAOOrdemServico dao = new DAOOrdemServico();
 		dao.atualizarEtapa(os, connector);
+	}
+	
+	public OrdemServico inserirOrdemServico(OrdemServico os, SQLConnector connector) throws Exception{
+		DAOOrdemServico dao = new DAOOrdemServico();
+		return dao.inserirOrdemServico(os, connector);
 	}
 }

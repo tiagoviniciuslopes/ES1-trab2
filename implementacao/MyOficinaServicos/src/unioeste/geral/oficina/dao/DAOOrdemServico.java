@@ -58,6 +58,17 @@ public class DAOOrdemServico {
 		
 		public void atualizarEtapa(OrdemServico os, SQLConnector connector) throws Exception{
 			String query = "UPDATE OrdemServico SET idEtapa = " +os.getEtapa().getIdEtapa() + " WHERE idOrdemServico = " + os.getIdOrdemServico() +";" ;
-			ResultSet result = connector.executeQuery(query);
+			connector.executeQuery(query);
 		}
+		
+		public OrdemServico inserirOrdemServico(OrdemServico os, SQLConnector connector) throws Exception{
+			
+			String query = "INSERT INTO OrdemServico (data,observacoes,idEtapa,idVeiculo,idFuncionario)"
+					+ " VALUES ('"+os.getSQLData()+"','"+os.getObservacoes()+"',"+os.getEtapa().getIdEtapa()+","+os.getVeiculo().getIdVeiculo()+","+os.getFuncionario().getIdPessoa()+");";
+			
+			os.setIdOrdemServico(connector.executeUpdateLastInserId(query));
+		
+			return os;
+		}
+		
 }

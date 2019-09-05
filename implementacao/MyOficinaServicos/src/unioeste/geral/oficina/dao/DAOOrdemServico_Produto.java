@@ -31,5 +31,11 @@ public class DAOOrdemServico_Produto {
 		return osps;
 			
 	}
+	
+	public void inserirOrdemServicoProduto(OrdemServico_Produto osp, SQLConnector connector) throws Exception{
+		String query = "INSERT INTO OrdemServico_Produto (idOrdemServico, idProduto, precoProduto, quantidadeProduto)"
+				+ " VALUES ("+osp.getIdOrdemServico()+","+osp.getProduto()+","+osp.getPrecoProduto()+","+osp.getQuantidadeProduto()+");";
+		connector.executeQuery(query);
+	}
 
 }
