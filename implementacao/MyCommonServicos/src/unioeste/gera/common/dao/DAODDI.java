@@ -27,8 +27,8 @@ public class DAODDI {
 		while(result.next()){
 			DDI ddi = new DDI();
 			
-			ddi.setNumero(result.getInt("numeroDDD"));
-			ddi.setIdDDI(result.getInt("idDDD"));
+			ddi.setNumero(result.getInt("numeroDDI"));
+			ddi.setIdDDI(result.getInt("idDDI"));
 			
 			ddis.add(ddi);
 		}

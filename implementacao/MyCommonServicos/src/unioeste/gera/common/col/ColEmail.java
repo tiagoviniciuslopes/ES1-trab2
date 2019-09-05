@@ -3,21 +3,22 @@ package unioeste.gera.common.col;
 import java.util.ArrayList;
 
 import unioeste.apoio.BD.SQLConnector;
-import unioeste.gera.common.dao.DAODDI;
-import unioeste.geral.common.bo.DDI;
+import unioeste.gera.common.dao.DAOEmail;
+import unioeste.geral.common.bo.Email;
+import unioeste.geral.common.bo.Pessoa;
 
 public class ColEmail {
 
-	public DDI obterDDIPorId(DDI ddi, SQLConnector connector) throws Exception{
-		DAODDI dao = new DAODDI();
+	public ArrayList<Email> obterEmailCliente(Pessoa pessoa, SQLConnector connector) throws Exception{
+		DAOEmail dao = new DAOEmail();
 		
-		return dao.obterDDIPorId(ddi, connector);
+		return dao.obterEmailCliente(pessoa, connector);
 	}
 	
-	public ArrayList<DDI> obterTodosDDIs(SQLConnector connector) throws Exception{
-		DAODDI dao = new DAODDI();
+	public ArrayList<Email> obterEmailFuncionario(Pessoa pessoa, SQLConnector connector) throws Exception{
+		DAOEmail dao = new DAOEmail();
 		
-		return dao.obterTodosDDIs(connector);
+		return dao.obterEmailFuncionario(pessoa, connector);
 	}
 	
 }

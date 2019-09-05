@@ -1,5 +1,4 @@
 package unioeste.geral.oficina.bo;
-import java.io.Serializable;
 
 import unioeste.geral.common.bo.PessoaFisica;
 

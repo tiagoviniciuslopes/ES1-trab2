@@ -14,7 +14,7 @@ public class ColAtividadeComercial {
 		return dao.obterAtividadeComercialPorId(atividadeComercial, connector);
 	}
 	
-	public ArrayList<AtividadeComercial> obterTodasCidades(SQLConnector connector) throws Exception{
+	public ArrayList<AtividadeComercial> obterTodasAtividadesComerciais(SQLConnector connector) throws Exception{
 		DAOAtividadeComercial dao = new DAOAtividadeComercial();
 		
 		return dao.obterTodasAtividadesComerciais(connector);

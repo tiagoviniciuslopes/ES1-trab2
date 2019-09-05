@@ -48,6 +48,16 @@ public class Cliente implements Serializable{
 	public void setClientePessoa(ClientePessoa clientePessoa) {
 		this.clientePessoa = clientePessoa;
 	}
+	
+	public boolean isPessoa() {
+		if(clienteEmpresa == null && clientePessoa != null) return true;
+		return false;
+	}
+	
+	public boolean isEmpresa() {
+		if(clienteEmpresa == null && clientePessoa != null) return false;
+		return true;
+	}
 
 
 }

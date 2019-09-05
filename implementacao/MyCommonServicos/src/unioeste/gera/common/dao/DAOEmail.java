@@ -12,7 +12,7 @@ public class DAOEmail {
 	public ArrayList<Email> obterEmailCliente(Pessoa pessoa, SQLConnector connector) throws Exception{
 		ArrayList<Email> email = new ArrayList<Email>();
 		
-		String query = "SELECT * FROM EmailCliente WHERE idEmailCliente = " + pessoa.getIdPessoa() + ";";
+		String query = "SELECT * FROM EmailCliente WHERE idCliente = " + pessoa.getIdPessoa() + ";";
 		ResultSet result = connector.executeQuery(query);
 		
 		while (result.next()) {
@@ -30,7 +30,7 @@ public class DAOEmail {
 	public ArrayList<Email> obterEmailFuncionario(Pessoa pessoa, SQLConnector connector) throws Exception{
 		ArrayList<Email> email = new ArrayList<Email>();
 		
-		String query = "SELECT * FROM EmailFuncionario WHERE idEmailCliente = " + pessoa.getIdPessoa() + ";";
+		String query = "SELECT * FROM EmailFuncionario WHERE idFuncionario = " + pessoa.getIdPessoa() + ";";
 		ResultSet result = connector.executeQuery(query);
 		
 		while (result.next()) {
