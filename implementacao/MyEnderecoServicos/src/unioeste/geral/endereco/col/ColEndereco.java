@@ -20,4 +20,10 @@ public class ColEndereco {
 		return dao.obterEnderecoPorCep(endereco,connector);
 	}
 	
+	public Endereco inserirEndereco(Endereco e, SQLConnector connector) throws Exception {
+		DAOEndereco dao = new DAOEndereco();
+		
+		return dao.inserirEndereco(e, connector);
+	}
+	
 }

@@ -33,4 +33,10 @@ public class ColAtividadeComercial {
 		return ac;
 	}
 	
+	public AtividadeComercial inserirAtividadeComercial(AtividadeComercial ac ,Pessoa pessoa, SQLConnector connector) throws Exception {
+		DAOAtividadeComercial dao = new DAOAtividadeComercial();
+		
+		return dao.inserirAtividadeComercial(ac, pessoa, connector);
+	}
+	
 }

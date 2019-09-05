@@ -21,4 +21,9 @@ public class ColFone {
 		return dao.obterFoneFuncionario(pessoa, connector);
 	}
 	
+	public Fone inserirFoneCliente(Fone f,Pessoa pessoa, SQLConnector connector) throws Exception {
+		DAOFone dao = new DAOFone();
+		
+		return dao.inserirFoneCliente(f, pessoa, connector);
+	}
 }

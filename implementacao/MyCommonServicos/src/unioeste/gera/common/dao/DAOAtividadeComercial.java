@@ -53,4 +53,11 @@ public class DAOAtividadeComercial {
 		
 		return atividadeComercial;
 	}
+	
+	public AtividadeComercial inserirAtividadeComercial(AtividadeComercial ac,Pessoa pessoa, SQLConnector connector) throws Exception {
+		String query = "INSERT INTO AtividadeComercial_Cliente (idAtividadeComercial, idPessoa) VALUES ("+ac.getIdAtividadeComercial()+","+pessoa.getIdPessoa()+");";
+		connector.executeQuery(query);
+		
+		return ac;
+	}
 }

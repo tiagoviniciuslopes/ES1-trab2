@@ -21,4 +21,10 @@ public class ColEmail {
 		return dao.obterEmailFuncionario(pessoa, connector);
 	}
 	
+	public Email inserirEmailCliente(Email e,Pessoa pessoa, SQLConnector connector) throws Exception {
+		DAOEmail dao = new DAOEmail();
+		
+		return dao.inserirEmailCliente(e, pessoa, connector);
+	}
+	
 }
