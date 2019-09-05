@@ -1,4 +1,4 @@
-package unioeste.gera.oficina.dao;
+package unioeste.geral.oficina.dao;
 
 import java.sql.ResultSet;
 

@@ -9,10 +9,18 @@ import unioeste.geral.oficina.bo.Veiculo;;
 public class DAOVeiculo {
 	
 	
-	public Veiculo obterVeiculoPorID(Veiculo veiculo, SQLConnector connector) throws Exception{
-		String query="SELECT *FROM Veiculo WHERE veiculo = " +veiculo.getIdVeiculo()+";";
+	public Veiculo obterVeiculoPorId(Veiculo veiculo, SQLConnector connector) throws Exception{
+		String query="SELECT *FROM Veiculo WHERE idVeiculo = " +veiculo.getIdVeiculo()+";";
 		ResultSet result = connector.executeQuery(query);
 		result.next();
+		
+		veiculo.setIdVeiculo(result.getInt("idVeiculo")); //verifica esse GetInt que eu fiz, se pode ser usado dessa maneira
+		veiculo.setMarca(result.getString("Marca"));
+		veiculo.setNomeVeiculo(result.getString("nomeVeiculo"));
+		veiculo.setModelo(result.getString("modelo"));
+		veiculo.setKmVeiculo(result.getInt("kmVeiculo")); //verifica esse GetInt que eu fiz, se pode ser usado dessa maneira
+		
+		
 		return veiculo;	
 	}
 		

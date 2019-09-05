@@ -10,7 +10,7 @@ public class ColVeiculo {
 	public Veiculo obterVeiculoPorID(Veiculo veiculo, SQLConnector connector) throws Exception{
 		DAOVeiculo dao = new DAOVeiculo();
 		
-		return dao.obterVeiculoPorID(veiculo,connector);		
+		return dao.obterVeiculoPorId(veiculo,connector);		
 	}
 	
 	public ArrayList<Veiculo> obterTodosVeiculos(SQLConnector connector) throws Exception{
