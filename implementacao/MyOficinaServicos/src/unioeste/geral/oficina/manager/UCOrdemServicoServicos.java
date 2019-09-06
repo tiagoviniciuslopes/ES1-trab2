@@ -31,20 +31,28 @@ public class UCOrdemServicoServicos {
 		
 		os = colOrdemServico.obterOrdemServicoId(os, connector);
 		os.setEtapa(colEtapa.obterEtapaId(os.getEtapa(), connector));
+		os.setPrecoTotal(0);
 		
 		OrdemServico_Servico oss_aux = new OrdemServico_Servico();
+		oss_aux.setIdOrdemServico(os.getIdOrdemServico());
 		ArrayList<OrdemServico_Servico> osss = colOSS.obterOrdemServicoServicoId(oss_aux, connector);
 		os.setOrdemServico_Servico(osss.toArray(new OrdemServico_Servico[osss.size()]));
 		for(OrdemServico_Servico oss : os.getOrdemServico_Servico()) {
 			oss.setServico(colServico.obterServicoPorId(oss.getServico(), connector));
+			os.setPrecoTotal(os.getPrecoTotal() + oss.getPrecoServico());
 		}
+		os.setOrdemServico_Servico(osss.toArray(new OrdemServico_Servico[osss.size()]));
 		
 		OrdemServico_Produto osp_aux = new OrdemServico_Produto();
+		osp_aux.setIdOrdemServico(os.getIdOrdemServico());
 		ArrayList<OrdemServico_Produto> osps = colOSP.obterOrdemServicoProdutoId(osp_aux, connector);
 		os.setOrdemServico_Produto(osps.toArray(new OrdemServico_Produto[osps.size()]));
 		for(OrdemServico_Produto osp : os.getOrdemServico_Produto()) {
 			osp.setProduto(colProduto.obterProdutoPorId(osp.getProduto(), connector));
+			osp.setTotal(osp.getPrecoProduto() * osp.getQuantidadeProduto());
+			os.setPrecoTotal(os.getPrecoTotal() + osp.getTotal());
 		}
+		os.setOrdemServico_Produto(osps.toArray(new OrdemServico_Produto[osps.size()]));
 		
 		os.setFuncionario(ucf.obterFuncionarioPorId(os.getFuncionario()));
 		os.setVeiculo(ucv.obterVeiculoPorId(os.getVeiculo()));
@@ -63,6 +71,9 @@ public class UCOrdemServicoServicos {
 		e.setIdEtapa(1);
 		Funcionario f = new Funcionario();
 		f.setIdPessoa(1);
+		
+		os.setEtapa(e);
+		os.setFuncionario(f);
 		
 		os = colOS.inserirOrdemServico(os, connector);
 		
@@ -83,6 +94,7 @@ public class UCOrdemServicoServicos {
 	public OrdemServico atualizarEtapa(OrdemServico os) throws Exception{
 		SQLConnector connector = new SQLConnector();
 		ColOrdemServico colOS = new ColOrdemServico();
+		os = obterOrdemServicoPorId(os);
 		
 		Etapa e = os.getEtapa();
 		e.setIdEtapa(e.getIdEtapa()+1);

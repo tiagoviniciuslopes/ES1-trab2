@@ -12,7 +12,7 @@ public class DAOProduto {
 			String query="SELECT * FROM Produto WHERE idProduto = " +produto.getIdProduto()+";";
 			ResultSet result = connector.executeQuery(query);
 			result.next();
-			produto.setIdProduto(result.getInt("idProdruto"));
+			produto.setIdProduto(result.getInt("idProduto"));
 			produto.setNome(result.getString("nomeProduto"));
 			produto.setPrecoBase(result.getFloat("precoBaseProduto"));
 			return produto;
