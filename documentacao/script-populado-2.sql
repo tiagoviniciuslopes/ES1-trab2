@@ -62,6 +62,7 @@ CREATE TABLE `atividadecomercial_cliente` (
 
 LOCK TABLES `atividadecomercial_cliente` WRITE;
 /*!40000 ALTER TABLE `atividadecomercial_cliente` DISABLE KEYS */;
+INSERT INTO `atividadecomercial_cliente` VALUES (2,2);
 /*!40000 ALTER TABLE `atividadecomercial_cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +148,7 @@ CREATE TABLE `cliente` (
   CONSTRAINT `FK_Cliente_0` FOREIGN KEY (`idSexo`) REFERENCES `sexo` (`idSexo`),
   CONSTRAINT `FK_Cliente_1` FOREIGN KEY (`idEndereco`) REFERENCES `endereco` (`idEndereco`),
   CONSTRAINT `FK_Cliente_2` FOREIGN KEY (`idOrgaoExpeditor`) REFERENCES `orgaoexpeditor` (`idOrgaoExpeditor`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,7 +157,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (1,'Tiago','Lopes','Pereira','Tiago V L Pereira','09722879901',NULL,1,23,'null',2,'97667450','1997-07-03',1,'C:/Users/Tiago/Fotos/foto.jpg','Arvores');
+INSERT INTO `cliente` VALUES (1,'Tiago','Lopes','Pereira','Tiago V L Pereira','09722879901',NULL,1,23,'null',2,'97667450','1997-07-03',1,'C:/Users/Tiago/Fotos/foto.jpg','Arvores'),(2,'Tiago V L P DevOps',NULL,NULL,'TVLP DevOps',NULL,'32864581000104',NULL,54,NULL,1,NULL,NULL,NULL,'C:FOTO.png','Empresa');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,7 +223,7 @@ CREATE TABLE `emailcliente` (
   PRIMARY KEY (`idEmailCliente`),
   KEY `FK_EmailCliente_0` (`idCliente`),
   CONSTRAINT `FK_EmailCliente_0` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +232,7 @@ CREATE TABLE `emailcliente` (
 
 LOCK TABLES `emailcliente` WRITE;
 /*!40000 ALTER TABLE `emailcliente` DISABLE KEYS */;
-INSERT INTO `emailcliente` VALUES (1,'tiago.foz@hotmail.com',1);
+INSERT INTO `emailcliente` VALUES (1,'tiago.foz@hotmail.com',1),(2,'suporte@devops.com.br',2);
 /*!40000 ALTER TABLE `emailcliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,7 +342,7 @@ CREATE TABLE `fonecliente` (
   CONSTRAINT `FK_FoneCliente_1` FOREIGN KEY (`idDDI`) REFERENCES `ddi` (`idDDI`),
   CONSTRAINT `FK_FoneCliente_2` FOREIGN KEY (`idDDD`) REFERENCES `ddd` (`idDDD`),
   CONSTRAINT `FK_FoneCliente_3` FOREIGN KEY (`idTipoFone`) REFERENCES `tipofone` (`idTipoFone`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -350,7 +351,7 @@ CREATE TABLE `fonecliente` (
 
 LOCK TABLES `fonecliente` WRITE;
 /*!40000 ALTER TABLE `fonecliente` DISABLE KEYS */;
-INSERT INTO `fonecliente` VALUES (1,'99940308',1,1,1,1);
+INSERT INTO `fonecliente` VALUES (1,'99940308',1,1,1,1),(2,'35776715',2,1,1,1);
 /*!40000 ALTER TABLE `fonecliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -419,7 +420,7 @@ CREATE TABLE `funcionario` (
   CONSTRAINT `FK_Funcionario_0` FOREIGN KEY (`idSexo`) REFERENCES `sexo` (`idSexo`),
   CONSTRAINT `FK_Funcionario_1` FOREIGN KEY (`idEndereco`) REFERENCES `endereco` (`idEndereco`),
   CONSTRAINT `FK_Funcionario_2` FOREIGN KEY (`idOrgaoExpeditor`) REFERENCES `orgaoexpeditor` (`idOrgaoExpeditor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -792,4 +793,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-05 23:42:05
+-- Dump completed on 2019-09-06  1:47:14
