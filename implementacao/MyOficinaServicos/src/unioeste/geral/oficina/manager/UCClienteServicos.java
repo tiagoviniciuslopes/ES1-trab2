@@ -2,6 +2,11 @@ package unioeste.geral.oficina.manager;
 
 import java.util.ArrayList;
 
+import com.ibm.cloud.sdk.core.service.security.IamOptions;
+import com.ibm.watson.visual_recognition.v3.VisualRecognition;
+import com.ibm.watson.visual_recognition.v3.model.ClassifiedImages;
+import com.ibm.watson.visual_recognition.v3.model.ClassifyOptions;
+
 import unioeste.apoio.BD.SQLConnector;
 import unioeste.gera.common.col.ColAtividadeComercial;
 import unioeste.gera.common.col.ColDDD;
@@ -224,6 +229,7 @@ public class UCClienteServicos {
 		ColFone colFone = new ColFone();
 		
 		ClienteEmpresa ce = c.getClienteEmpresa();
+		ce.setDescricaoFoto(getDescFoto(ce.getCaminhoFoto()));
 		EnderecoEspecifico ee = ce.getEnderecoEspecifico();
 		ee.setEndereco(colEndereco.inserirEndereco(ee.getEndereco(), connector));
 		ce.setEnderecoEspecifico(ee);
@@ -256,6 +262,7 @@ public class UCClienteServicos {
 		ColFone colFone = new ColFone();
 		
 		ClientePessoa cp = c.getClientePessoa();
+		cp.setDescricaoFoto(getDescFoto(cp.getCaminhoFoto()));
 		EnderecoEspecifico ee = cp.getEnderecoEspecifico();
 		ee.setEndereco(colEndereco.inserirEndereco(ee.getEndereco(), connector));
 		cp.setEnderecoEspecifico(ee);
@@ -277,5 +284,25 @@ public class UCClienteServicos {
 		return c;
 	}
 	
+	
+	public String getDescFoto(String caminho) throws Exception{
+		
+		IamOptions options = new IamOptions.Builder ()
+		        .apiKey ("MZUFKMo-8P8onuoQhnWqLVxrHaWC18OxnWUoi4a8Ggzp")
+		        .build();
+
+		    VisualRecognition service = new VisualRecognition("2018-03-19", options);
+
+		    ClassifyOptions classifyOptions = new ClassifyOptions.Builder ()
+		        .url(caminho)
+		        .build();
+		    ClassifiedImages result = service.classify(classifyOptions).execute().getResult();
+		    /*System.out.println(
+		        "\n******** Classify with the General model ********\n" + result
+		            + "\n******** END Classify with the General model ********\n");*/
+		    System.out.println(result.getImages().get(0).getClassifiers().get(0).getClasses().get(0).getClassName());
+		
+		return result.getImages().get(0).getClassifiers().get(0).getClasses().get(0).getClassName();
+	}
 	
 }

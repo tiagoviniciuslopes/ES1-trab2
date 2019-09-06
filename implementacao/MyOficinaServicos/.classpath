@@ -9,5 +9,7 @@
 	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyOficinaBO/MyOficinaBO.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyEnderecoServicos/MyEnderecoServicos.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyCommonServicos/MyCommonServicos.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyOficinaServicos/ibm-watson-7.0.0-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyOficinaServicos/java-sdk-6.7.0-jar-with-dependencies.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
