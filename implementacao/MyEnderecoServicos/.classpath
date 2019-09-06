@@ -5,5 +5,6 @@
 	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyInfraAPI/MyInfraAPI.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyInfraAPI/mysql-connector-java-5.1.46-bin.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyEnderecoBO/MyEnderecoBO.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tiago/Desktop/trabs/ES1/ES1-trab2/implementacao/MyJSON/MyJSON.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
