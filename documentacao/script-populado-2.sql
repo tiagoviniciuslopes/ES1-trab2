@@ -428,6 +428,7 @@ CREATE TABLE `funcionario` (
 
 LOCK TABLES `funcionario` WRITE;
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
+INSERT INTO `funcionario` VALUES (1,'Bruno','','Bucciaratti','Bruno B.','09778579845',1,23,'null',1,'97667450','1997-07-03',1,'C:/Users/Tiago/Fotos/foto.jpg','Arvores');
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 UNLOCK TABLES;
 
