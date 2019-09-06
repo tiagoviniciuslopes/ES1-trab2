@@ -8,7 +8,7 @@ import unioeste.geral.common.bo.Sexo;
 
 public class DAOSexo {
 
-public Sexo obterSexoPorId(Sexo sexo, SQLConnector connector) throws Exception{
+	public Sexo obterSexoPorId(Sexo sexo, SQLConnector connector) throws Exception{
 		
 		String query = "SELECT * FROM Sexo WHERE idSexo = " + sexo.getIdSexo() + ";";
 		ResultSet result = connector.executeQuery(query);

@@ -19,7 +19,7 @@ public class DAOCliente {
 	public Cliente obterClientePorCpf(Cliente cliente, SQLConnector connector) throws Exception{
 		ClientePessoa cp = cliente.getClientePessoa();
 		
-		String query = "SELECT * FROM Cliente WHERE cpf = '" + cp.getCpf() + "';";
+		String query = "SELECT * FROM Cliente WHERE cpf = '" + cp.getCpf().getNumeroDoc() + "';";
 		ResultSet result = connector.executeQuery(query);
 		result.next();
 		
@@ -60,7 +60,7 @@ public class DAOCliente {
 	public Cliente obterClientePorCnpj(Cliente cliente, SQLConnector connector) throws Exception{
 		ClienteEmpresa ce = cliente.getClienteEmpresa();
 		
-		String query = "SELECT * FROM Cliente WHERE cnpj= '" + ce.getCnpj() + "';";
+		String query = "SELECT * FROM Cliente WHERE cnpj= '" + ce.getCnpj().getNumeroDoc() + "';";
 		ResultSet result = connector.executeQuery(query);
 		result.next();
 		
@@ -185,11 +185,11 @@ public class DAOCliente {
 		
 		ClientePessoa cp = c.getClientePessoa();
 		
-		String query = "INSERT INTO Cliente (caminhoFoto,cpf,descricaoFoto,numeroDoc,dataExpedicao,idOrgaoExpeditor"
-				+ "numero,complemento,idEndereco,nomeAbreviadoCliente,nomeMeioCliente"
+		String query = "INSERT INTO Cliente (caminhoFoto,cpf,descricaoFoto,numeroDoc,dataExpedicao,idOrgaoExpeditor,"
+				+ "numero,complemento,idEndereco,nomeAbreviadoCliente,nomeMeioCliente,"
 				+ "primeiroNomeCliente,ultimoNomeCliente,idSexo) VALUES ('"+cp.getCaminhoFoto()+"',"
-				+ "'"+cp.getCpf().getNumeroDoc()+"','"+cp.getDescricaoFoto()+"','"+cp.getDocIdentidade().getNumeroDoc()+"','"
-				+ cp.getDocIdentidade().getSQLData() + cp.getDocIdentidade().getOrgaoExpeditor().getIdOrgaoExpeditor() + "'," + cp.getEnderecoEspecifico().getNumero() + ",'"+ cp.getEnderecoEspecifico().getComplemento() +"',"
+				+ "'"+cp.getCpf().getNumeroDoc()+"','"+cp.getDescricaoFoto()+"','"+cp.getDocIdentidade().getNumeroDoc()+"',"
+				+ cp.getDocIdentidade().getSQLData() + ","+ cp.getDocIdentidade().getOrgaoExpeditor().getIdOrgaoExpeditor() + "," + cp.getEnderecoEspecifico().getNumero() + ",'"+ cp.getEnderecoEspecifico().getComplemento() +"',"
 				+ cp.getEnderecoEspecifico().getEndereco().getIdEndereco() +",'"+ cp.getNomeAbreviado() +"',"
 				+ "'"+ cp.getNomeMeio() +"', '"+cp.getPrimeiroNome()+"','"+cp.getUltimoNome()+"',"+cp.getSexo().getIdSexo()+");";
 		

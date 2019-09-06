@@ -65,7 +65,8 @@ public class DAOEndereco {
 	
 	public Endereco inserirEndereco(Endereco endereco, SQLConnector connector) throws Exception {
 		String query = "INSERT INTO Endereco (cep,idBairro,idCidade,idLogradouro) VALUES ('"+endereco.getCep()+"',"+endereco.getBairro().getIdBairro()+","+endereco.getCidade().getIdCidade()+","+endereco.getLogradouro().getIdLogradouro()+");";
-		connector.executeQuery(query);
+		connector.executeUpdate(query);
+		endereco.setIdEndereco( obterEnderecoPorCep(endereco,connector).get(0).getIdEndereco());
 		
 		return endereco;
 	}

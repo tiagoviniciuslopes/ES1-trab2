@@ -15,7 +15,7 @@ public class DAOFone {
 	public ArrayList<Fone> obterFoneCliente(Pessoa pessoa, SQLConnector connector) throws Exception{
 		ArrayList<Fone> fone = new ArrayList<Fone>();
 		
-		String query = "SELECT * FROM FoneCliente WHERE idFoneCliente = " + pessoa.getIdPessoa() + ";";
+		String query = "SELECT * FROM FoneCliente WHERE idCliente = " + pessoa.getIdPessoa() + ";";
 		ResultSet result = connector.executeQuery(query);
 		
 		while (result.next()) {
@@ -45,7 +45,7 @@ public class DAOFone {
 	public ArrayList<Fone> obterFoneFuncionario(Pessoa pessoa, SQLConnector connector) throws Exception{
 		ArrayList<Fone> fone = new ArrayList<Fone>();
 		
-		String query = "SELECT * FROM FoneFuncionario WHERE idFoneFuncionario = " + pessoa.getIdPessoa() + ";";
+		String query = "SELECT * FROM FoneFuncionario WHERE idFuncionario = " + pessoa.getIdPessoa() + ";";
 		ResultSet result = connector.executeQuery(query);
 		
 		while (result.next()) {
@@ -74,7 +74,7 @@ public class DAOFone {
 	
 	public Fone inserirFoneCliente(Fone f, Pessoa pessoa, SQLConnector connector) throws Exception {
 		String query = "INSERT INTO FoneCliente (numeroFone, idCliente, idDDD, idDDI, idTipoFone) VALUES ('"+f.getNumeroTelefone()+"',"+pessoa.getIdPessoa()+","+f.getDdd().getIdDDD()+","+f.getDdi().getIdDDI()+","+f.getTipoFone().getIdTipoFone()+")";
-		connector.executeQuery(query);
+		connector.executeUpdate(query);
 		
 		return f;
 	}

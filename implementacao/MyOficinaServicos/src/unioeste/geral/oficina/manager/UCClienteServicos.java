@@ -56,10 +56,10 @@ public class UCClienteServicos {
 		f.setSexo(s);
 		
 		
-		ArrayList<Email> emails = colEmail.obterEmailFuncionario(f, connector);
+		ArrayList<Email> emails = colEmail.obterEmailCliente(f, connector);
 		f.setEmail(emails.toArray(new Email[emails.size()]));
 		
-		ArrayList<Fone> fones = colFone.obterFoneFuncionario(f, connector);
+		ArrayList<Fone> fones = colFone.obterFoneCliente(f, connector);
 		ColDDD colDDD = new ColDDD();
 		ColDDI colDDI = new ColDDI();
 		ColTipoFone colTipoFone = new ColTipoFone();
@@ -106,10 +106,10 @@ public class UCClienteServicos {
 		f.setSexo(s);
 		
 		
-		ArrayList<Email> emails = colEmail.obterEmailFuncionario(f, connector);
+		ArrayList<Email> emails = colEmail.obterEmailCliente(f, connector);
 		f.setEmail(emails.toArray(new Email[emails.size()]));
 		
-		ArrayList<Fone> fones = colFone.obterFoneFuncionario(f, connector);
+		ArrayList<Fone> fones = colFone.obterFoneCliente(f, connector);
 		ColDDD colDDD = new ColDDD();
 		ColDDI colDDI = new ColDDI();
 		ColTipoFone colTipoFone = new ColTipoFone();
@@ -146,10 +146,10 @@ public class UCClienteServicos {
 		f.setEnderecoEspecifico(ee);
 
 		
-		ArrayList<Email> emails = colEmail.obterEmailFuncionario(f, connector);
+		ArrayList<Email> emails = colEmail.obterEmailCliente(f, connector);
 		f.setEmail(emails.toArray(new Email[emails.size()]));
 		
-		ArrayList<Fone> fones = colFone.obterFoneFuncionario(f, connector);
+		ArrayList<Fone> fones = colFone.obterFoneCliente(f, connector);
 		ColDDD colDDD = new ColDDD();
 		ColDDI colDDI = new ColDDI();
 		ColTipoFone colTipoFone = new ColTipoFone();
@@ -189,10 +189,10 @@ public class UCClienteServicos {
 		f.setEnderecoEspecifico(ee);
 		
 		
-		ArrayList<Email> emails = colEmail.obterEmailFuncionario(f, connector);
+		ArrayList<Email> emails = colEmail.obterEmailCliente(f, connector);
 		f.setEmail(emails.toArray(new Email[emails.size()]));
 		
-		ArrayList<Fone> fones = colFone.obterFoneFuncionario(f, connector);
+		ArrayList<Fone> fones = colFone.obterFoneCliente(f, connector);
 		ColDDD colDDD = new ColDDD();
 		ColDDI colDDI = new ColDDI();
 		ColTipoFone colTipoFone = new ColTipoFone();
@@ -223,6 +223,12 @@ public class UCClienteServicos {
 		ColEmail colEmail = new ColEmail();
 		ColFone colFone = new ColFone();
 		
+		ClienteEmpresa ce = c.getClienteEmpresa();
+		EnderecoEspecifico ee = ce.getEnderecoEspecifico();
+		ee.setEndereco(colEndereco.inserirEndereco(ee.getEndereco(), connector));
+		ce.setEnderecoEspecifico(ee);
+		c.setClienteEmpresa(ce);
+		
 		colCliente.inserirClienteEmpresa(c, connector);
 		
 		for(AtividadeComercial ac : c.getClienteEmpresa().getAtividadeComercial()) {
@@ -237,11 +243,6 @@ public class UCClienteServicos {
 			f = colFone.inserirFoneCliente(f, c.getClienteEmpresa(), connector);
 		}
 		
-		ClienteEmpresa ce = c.getClienteEmpresa();
-		EnderecoEspecifico ee = ce.getEnderecoEspecifico();
-		ee.setEndereco(colEndereco.inserirEndereco(ee.getEndereco(), connector));
-		ce.setEnderecoEspecifico(ee);
-		c.setClienteEmpresa(ce);
 		
 		connector.close();
 		return c;
@@ -254,6 +255,12 @@ public class UCClienteServicos {
 		ColEmail colEmail = new ColEmail();
 		ColFone colFone = new ColFone();
 		
+		ClientePessoa cp = c.getClientePessoa();
+		EnderecoEspecifico ee = cp.getEnderecoEspecifico();
+		ee.setEndereco(colEndereco.inserirEndereco(ee.getEndereco(), connector));
+		cp.setEnderecoEspecifico(ee);
+		c.setClientePessoa(cp);
+		
 		colCliente.inserirClientePessoa(c, connector);
 		
 		for(Email e : c.getClientePessoa().getEmail()) {
@@ -261,14 +268,10 @@ public class UCClienteServicos {
 		}
 		
 		for(Fone f : c.getClientePessoa().getFone()) {
-			f = colFone.inserirFoneCliente(f, c.getClienteEmpresa(), connector);
+			f = colFone.inserirFoneCliente(f, c.getClientePessoa(), connector);
 		}
 		
-		ClientePessoa cp = c.getClientePessoa();
-		EnderecoEspecifico ee = cp.getEnderecoEspecifico();
-		ee.setEndereco(colEndereco.inserirEndereco(ee.getEndereco(), connector));
-		cp.setEnderecoEspecifico(ee);
-		c.setClientePessoa(cp);
+		
 		
 		connector.close();
 		return c;

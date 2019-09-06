@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `mydb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `mydb`;
 -- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: mydb
@@ -149,7 +147,7 @@ CREATE TABLE `cliente` (
   CONSTRAINT `FK_Cliente_0` FOREIGN KEY (`idSexo`) REFERENCES `sexo` (`idSexo`),
   CONSTRAINT `FK_Cliente_1` FOREIGN KEY (`idEndereco`) REFERENCES `endereco` (`idEndereco`),
   CONSTRAINT `FK_Cliente_2` FOREIGN KEY (`idOrgaoExpeditor`) REFERENCES `orgaoexpeditor` (`idOrgaoExpeditor`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,6 +156,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (1,'Tiago','Lopes','Pereira','Tiago V L Pereira','09722879901',NULL,1,23,'null',2,'97667450','1997-07-03',1,'C:/Users/Tiago/Fotos/foto.jpg','Arvores');
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +222,7 @@ CREATE TABLE `emailcliente` (
   PRIMARY KEY (`idEmailCliente`),
   KEY `FK_EmailCliente_0` (`idCliente`),
   CONSTRAINT `FK_EmailCliente_0` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,6 +231,7 @@ CREATE TABLE `emailcliente` (
 
 LOCK TABLES `emailcliente` WRITE;
 /*!40000 ALTER TABLE `emailcliente` DISABLE KEYS */;
+INSERT INTO `emailcliente` VALUES (1,'tiago.foz@hotmail.com',1);
 /*!40000 ALTER TABLE `emailcliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +281,7 @@ CREATE TABLE `endereco` (
   CONSTRAINT `FK_Endereco_0` FOREIGN KEY (`idBairro`) REFERENCES `bairro` (`idBairro`),
   CONSTRAINT `FK_Endereco_1` FOREIGN KEY (`idCidade`) REFERENCES `cidade` (`idCidade`),
   CONSTRAINT `FK_Endereco_2` FOREIGN KEY (`idLogradouro`) REFERENCES `logradouro` (`idLogradouro`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,7 +290,7 @@ CREATE TABLE `endereco` (
 
 LOCK TABLES `endereco` WRITE;
 /*!40000 ALTER TABLE `endereco` DISABLE KEYS */;
-INSERT INTO `endereco` VALUES (1,'85867530',1,1,1);
+INSERT INTO `endereco` VALUES (1,'85867530',1,1,1),(2,'85867500',1,1,1);
 /*!40000 ALTER TABLE `endereco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,7 +341,7 @@ CREATE TABLE `fonecliente` (
   CONSTRAINT `FK_FoneCliente_1` FOREIGN KEY (`idDDI`) REFERENCES `ddi` (`idDDI`),
   CONSTRAINT `FK_FoneCliente_2` FOREIGN KEY (`idDDD`) REFERENCES `ddd` (`idDDD`),
   CONSTRAINT `FK_FoneCliente_3` FOREIGN KEY (`idTipoFone`) REFERENCES `tipofone` (`idTipoFone`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -350,6 +350,7 @@ CREATE TABLE `fonecliente` (
 
 LOCK TABLES `fonecliente` WRITE;
 /*!40000 ALTER TABLE `fonecliente` DISABLE KEYS */;
+INSERT INTO `fonecliente` VALUES (1,'99940308',1,1,1,1);
 /*!40000 ALTER TABLE `fonecliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -790,4 +791,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-03 13:06:11
+-- Dump completed on 2019-09-05 23:42:05

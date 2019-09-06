@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import unioeste.apoio.BD.SQLConnector;
 import unioeste.geral.common.bo.Pessoa;
+import unioeste.geral.oficina.bo.Cliente;
 import unioeste.geral.oficina.bo.Veiculo;
 import unioeste.geral.oficina.col.ColVeiculo;
 
@@ -46,11 +47,11 @@ public class UCVeiculoServicos {
 		return v;
 	}
 	
-	public Veiculo inserirVeiculo(Veiculo veiculo) throws Exception {
+	public Veiculo inserirVeiculo(Cliente c, Veiculo veiculo) throws Exception {
 		SQLConnector connector = new SQLConnector();
 		ColVeiculo colVeiculo = new ColVeiculo();
 		
-		Veiculo v = colVeiculo.inserirVeiculo(veiculo, connector);
+		Veiculo v = colVeiculo.inserirVeiculo(c, veiculo, connector);
 		connector.close();
 		return v;
 		

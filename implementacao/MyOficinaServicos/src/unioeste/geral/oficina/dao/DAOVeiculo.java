@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import unioeste.apoio.BD.SQLConnector;
 import unioeste.geral.common.bo.Pessoa;
+import unioeste.geral.oficina.bo.Cliente;
 import unioeste.geral.oficina.bo.Placa;
 import unioeste.geral.oficina.bo.Veiculo;
 
@@ -90,12 +91,16 @@ public class DAOVeiculo {
 		return veiculo;	
 	}
 	
-	public Veiculo inserirVeiculo(Veiculo veiculo, SQLConnector connector) throws Exception{
-	
-		String query = "INSERT INTO Veiculo (marcaVeiculo,nomeVeiculo,modeloVeiculo,kmVeiculo,placaVeiculo)"
-				+ " VALUES ('"+veiculo.getMarca()+"','"+veiculo.getNomeVeiculo()+"','"+veiculo.getModelo()+"',"+veiculo.getKmVeiculo()+",'"+veiculo.getPlaca().getPlaca()+"');";
+	public Veiculo inserirVeiculo(Cliente c, Veiculo veiculo, SQLConnector connector) throws Exception{
+		int id;
 		
-		connector.executeQuery(query);
+		if(c.getClienteEmpresa() != null && c.getClienteEmpresa().getIdPessoa() != 0) id = c.getClienteEmpresa().getIdPessoa();
+		else id = c.getClientePessoa().getIdPessoa();
+		
+		String query = "INSERT INTO Veiculo (marcaVeiculo,nomeVeiculo,modeloVeiculo,kmVeiculo,placaVeiculo,idCliente)"
+				+ " VALUES ('"+veiculo.getMarca()+"','"+veiculo.getNomeVeiculo()+"','"+veiculo.getModelo()+"',"+veiculo.getKmVeiculo()+",'"+veiculo.getPlaca().getPlaca()+"',"+id+");";
+		
+		connector.executeUpdate(query);
 		
 		veiculo = obterVeiculoPorPlaca(veiculo,connector);
 		

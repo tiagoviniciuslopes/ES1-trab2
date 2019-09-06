@@ -47,7 +47,7 @@ public class DAOEmail {
 	
 	public Email inserirEmailCliente(Email e, Pessoa pessoa, SQLConnector connector) throws Exception {
 		String query = "INSERT INTO EmailCliente (descricaoEmail,idCliente) VALUES ('"+e.getDescricao()+"',"+pessoa.getIdPessoa()+");";
-		connector.executeQuery(query);
+		connector.executeUpdate(query);
 		
 		return e;
 	}

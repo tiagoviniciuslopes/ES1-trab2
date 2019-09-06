@@ -138,4 +138,13 @@ public class UCEnderecoGeralServicos {
 		return cidade;
 	}
 	
+	public Endereco inserirEndereco(Endereco e) throws Exception {
+		SQLConnector connector = new SQLConnector();
+		ColEndereco colEndereco = new ColEndereco();
+		
+		e = colEndereco.inserirEndereco(e, connector);
+				
+		connector.close();
+		return e;
+	}
 }
